@@ -1,0 +1,4 @@
+{
+  "JIAJU_JAVA_HOME": "/path/to/jdk17",
+  "JIAJU_ANDROID_SDK": "/path/to/android-sdk"
+}

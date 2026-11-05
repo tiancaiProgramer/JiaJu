@@ -1,0 +1,43 @@
+{
+  "version": "0.0.5",
+  "application_label": "家聚",
+  "package": "dev.homecontrol.app",
+  "version_code": 5,
+  "date": "2026-11-05",
+  "apk_sha256": "94c0c9e34557b7e1d8b2293ed89e942dfc5f2129987fea53bd1034be95b3aa88",
+  "signing_certificate_sha256": "90fdd03f6335597acdd3b1068774f331a7112a8241b1176d52152cf6c65a4f1f",
+  "jvm_checks": 255,
+  "checks_include": [
+    "original cloud wire/model/layout/command checks",
+    "model-specific kitchen program/timer/state boundaries",
+    "compatibility with legacy 家控 timer names"
+  ],
+  "apk_signature_verified": true,
+  "changes_in_this_release": [
+    "rebrand to 家聚 / JiaJu",
+    "independent public GitHub project",
+    "about-page link to GitHub latest Release",
+    "portable configuration and NAS restore/build scripts"
+  ],
+  "hardware_tests_this_release": false,
+  "inherited_validation_from_0_0_4": {
+    "independent_reads_with_mihome_stopped": true,
+    "mijia_devices": 50,
+    "haier_devices": 1,
+    "lamp_real_power_cycle": "previously user-authorized; restored off",
+    "stable_refresh_frames": {
+      "lamp": 104,
+      "microwave": 104
+    },
+    "read_only_kitchen_menus_and_recipe_pages": true
+  },
+  "unverified": [
+    "physical kitchen cooking",
+    "favorite mutations",
+    "real timer execution",
+    "js5 extended program format",
+    "lock advanced control/password/users/video",
+    "non-hook negative-one-screen placement",
+    "cross-region and long-lived sessions"
+  ]
+}

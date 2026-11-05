@@ -1,0 +1,13 @@
+Mi Home community protocol references
+
+Xiaomi-cloud-tokens-extractor — Copyright (c) 2020 Piotr Machowski — MIT
+https://github.com/PiotrMachowski/Xiaomi-cloud-tokens-extractor
+
+hass-xiaomi-miot — Apache-2.0
+https://github.com/al-one/hass-xiaomi-miot
+
+HomeControl implements the documented-by-source login challenge, RC4-drop1024 API signing, directory and MIoT wire formats as independent Android code. Referenced files: MijiaWire.java, MijiaLogin.java, MijiaCloud.java, MijiaSpec.java. License texts accompany this notice. No restricted XiaoMi/ha_xiaomi_home source, HA OAuth application credentials, user account cookies or third-party APK are packaged.
+
+HomeControl 0.0.4 adds independently implemented, model-scoped device RPC, timer and manufacturer recipe protocols. Public MiEcosystem SDK documentation and the installed device plugins were used only as protocol references. No SDK implementation, proprietary plugin bundle/UI/runtime, private account database or camera media is included.
+https://github.com/MiEcosystem/miot-plugin-sdk
+https://github.com/MiEcosystem/NewXmPluginSDK

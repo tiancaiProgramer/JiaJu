@@ -1,0 +1,14 @@
+build/
+dist/
+.local/
+local/
+private-signing/
+_backup/
+__pycache__/
+*.apk
+*.jks
+*.keystore
+*.enc
+*.bundle
+*.zip
+CONTINUATION-NAS.txt

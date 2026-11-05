@@ -1,0 +1,10 @@
+# Haier protocol references
+
+The independent Haier integration adapts authentication, signing, digital-model and WebSocket message formats from:
+
+- banto6/haier — https://github.com/banto6/haier — Apache-2.0.
+- haier-ha/ha_haier_home — https://github.com/haier-ha/ha_haier_home — Apache-2.0.
+
+Adapted files: HaierCloud.java, HaierWire.java, HaierSocket.java and HaierOAuthActivity.java. These are Android implementations; no Home Assistant runtime is packaged. The public Home Assistant OAuth configuration remains an experimental compatibility profile and does not identify this project as an officially registered Haier application.
+
+The Apache-2.0 license text is in haier-Apache-2.0.txt. No third-party APK, device-page template, user account database or user credentials are included.
