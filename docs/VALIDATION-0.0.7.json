@@ -1,0 +1,70 @@
+{
+  "version": "0.0.7",
+  "date": "2026-11-06",
+  "status": "cross_network_live_video_and_ui_verified",
+  "model": "chuangmi.camera.069a01",
+  "target": "1号监控",
+  "authorization": {
+    "own_account": true,
+    "code": 0,
+    "vendor": 4,
+    "public_key_length": 64,
+    "signature_length": 64
+  },
+  "local_test": {
+    "app_installed": true,
+    "phone_same_subnet": false,
+    "connection": "timeout",
+    "frames_received": 0,
+    "frames_rendered": 0,
+    "video_saved": false
+  },
+  "cloud_test": {
+    "implementation_built": true,
+    "executed": true,
+    "approval": "user_explicitly_authorized_xiaomi_cloud_relay_video_test",
+    "phone_network": "different_network_confirmed_by_user",
+    "frames_received": 6,
+    "frames_rendered": 6,
+    "codec": "H.265 / HEVC",
+    "actual_video_decoded": true,
+    "video_saved": false
+  },
+  "checks": {
+    "jvm_assertions": 290,
+    "go_cases": [
+      "known_initializer_interoperability_and_invalid_directories",
+      "eight_character_uid_block_and_malformed_ids",
+      "fragmented_frame_and_oversized_lengths"
+    ],
+    "signature_compatible": true,
+    "ui_playback_verified": true
+  },
+  "physical_controls_sent": false,
+  "media_exported": false,
+  "limitations": [
+    "Only exact model chuangmi.camera.069a01 enabled",
+    "arm64-v8a native process only",
+    "No audio/PTZ/talk-back",
+    "HD quality, long sessions, other networks and other camera models still need separate validation"
+  ],
+  "upstream": {
+    "lan": "AlexxIT/go2rtc@990f4de3cc21d1cca917d02d0bc40f2fabe75a49",
+    "cloud": "kisharora/go2rtc@76b3e456c2f1dda97cce9f2797a668818e165488"
+  },
+  "apk_sha256": "41600e4a67026fe3c11abb1fa2e26f31c588ddfb69f007413fcaa1f64c28734b",
+  "final_apk_installed": true,
+  "temporary_checker_removed": true,
+  "ui_test": {
+    "route_correct": true,
+    "continuous_rendering": true,
+    "frames_initial": 6,
+    "frames_later": 75,
+    "surface_width": 970,
+    "surface_height": 545,
+    "status_overlay_hidden": true,
+    "disconnect_on_exit": true,
+    "layout_unchanged": true,
+    "video_saved": false
+  }
+}

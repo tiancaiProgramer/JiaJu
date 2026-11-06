@@ -1,0 +1,57 @@
+{
+  "version": "0.0.6",
+  "date": "2026-11-06",
+  "package": "dev.homecontrol.app",
+  "version_code": 6,
+  "local_checks": {
+    "total": 270,
+    "groups": [
+      7,
+      52,
+      15,
+      35,
+      43,
+      22,
+      21,
+      75
+    ],
+    "all_passed": true
+  },
+  "apk_sha256": "40acd9218c51ad80509c712101d9bf4c723c2dfcb4c18546e687a7aac5c5d6ed",
+  "signing_sha256": "90fdd03f6335597acdd3b1068774f331a7112a8241b1176d52152cf6c65a4f1f",
+  "same_signer_compatible_upgrade": true,
+  "physical_commands_sent": false,
+  "installed_to_phone_this_iteration": true,
+  "native_ui_verified_on_phone": true,
+  "live_family_metadata_verified": true,
+  "limitations": [
+    "独立监控视频仍未接通",
+    "厨房独立预约仅展示已提供的可写能力，未适配型号显示未接通",
+    "家庭分类分页超过首批 300 条时仅部分同步并显示提示",
+    "原生控件和展示联动已通过实机检查；首页长按拖动已由用户确认成功，小组件放置仍待测试"
+  ],
+  "device_cache_after_upgrade": {
+    "mijia": 50,
+    "haier": 1,
+    "mijia_logged_in": true,
+    "physical_commands_sent": false
+  },
+  "native_ui_verification_status": "15 native UI assertions passed; homepage long-press drag confirmed by user",
+  "phone_ui_checks": {
+    "passed": 15,
+    "original_layout_restored": true,
+    "located_devices": 46,
+    "homepage_touch_drag_automated": false,
+    "physical_commands_sent": false,
+    "manual_drag_status": "user_confirmed_success",
+    "manual_test_original_layout_restored": true,
+    "manual_drag_confirmation": {
+      "source": "user_report",
+      "date": "2026-11-06",
+      "result": "已拖动成功"
+    },
+    "automated_manual_drag_observation": "not_observed_before_timeout",
+    "family_count": 4
+  },
+  "temporary_checker_removed": true
+}

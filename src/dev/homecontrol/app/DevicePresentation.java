@@ -10,6 +10,8 @@ public final class DevicePresentation {
     public final List<String> allOrder = new ArrayList<>();
     public final List<String> hiddenOrder = new ArrayList<>();
     public final Set<String> hidden = new LinkedHashSet<>();
+    public final Set<String> excluded = new LinkedHashSet<>();
+    public boolean hiddenModuleVisible = true;
 
     public static DevicePresentation migrate(List<String> discovered, Set<String> oldExcluded, int oldLimit) {
         DevicePresentation result = new DevicePresentation();
@@ -29,26 +31,40 @@ public final class DevicePresentation {
     }
     public List<String> home(List<String> discovered) {
         List<String> result = new ArrayList<>();
-        for (String id : clean(pinned)) if (!hidden.contains(id)) result.add(id);
+        for (String id : clean(pinned)) if (!hidden.contains(id) && !excluded.contains(id)
+                && (!HIDDEN.equals(id) || hiddenModuleVisible && !concealed(discovered).isEmpty())) result.add(id);
         return result;
     }
     public List<String> all(List<String> discovered) {
-        List<String> available = clean(discovered); available.add(HIDDEN);
+        List<String> available = clean(discovered);
+        if (hiddenModuleVisible && !concealed(discovered).isEmpty()) available.add(HIDDEN);
         List<String> result = ordered(available, allOrder);
-        result.removeIf(hidden::contains); return result;
+        result.removeIf(id -> hidden.contains(id) || excluded.contains(id)); return result;
     }
     public List<String> concealed(List<String> discovered) {
         List<String> result = ordered(clean(discovered), hiddenOrder);
-        result.removeIf(id -> !hidden.contains(id)); return result;
+        result.removeIf(id -> !hidden.contains(id) || excluded.contains(id)); return result;
+    }
+    public List<String> excluded(List<String> discovered) { List<String> result=ordered(clean(discovered),allOrder);result.removeIf(id->!excluded.contains(id));return result; }
+    public String placement(String id) {
+        if (HIDDEN.equals(id)) return !hiddenModuleVisible?"excluded":pinned.contains(id)?"home":"all";
+        return excluded.contains(id)?"excluded":hidden.contains(id)?"hidden":pinned.contains(id)?"home":"all";
+    }
+    public void place(String id,String value) {
+        if(id==null||id.isEmpty()||!Arrays.asList("home","all","hidden","excluded").contains(value))return;
+        if(HIDDEN.equals(id)){if("hidden".equals(value))return;hiddenModuleVisible=!"excluded".equals(value);if("home".equals(value))pin(id,true);else pinned.remove(id);return;}
+        hidden.remove(id);excluded.remove(id);
+        if("home".equals(value))pin(id,true);
+        else {pinned.remove(id);if("hidden".equals(value))hide(id,true);if("excluded".equals(value))excluded.add(id);}
     }
     public void pin(String id, boolean value) {
-        if (id == null || id.isEmpty() || hidden.contains(id)) return;
+        if (id == null || id.isEmpty() || hidden.contains(id) || excluded.contains(id)) return;
         if (value) { if (!pinned.contains(id)) pinned.add(id); } else pinned.remove(id);
     }
     public void hide(String id, boolean value) {
         if (id == null || id.isEmpty() || HIDDEN.equals(id)) return;
         if (value) {
-            hidden.add(id); pinned.remove(id);
+            hidden.add(id); excluded.remove(id); pinned.remove(id);
             if (!hiddenOrder.contains(id)) hiddenOrder.add(id);
         } else hidden.remove(id);
     }

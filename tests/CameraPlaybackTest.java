@@ -1,0 +1,13 @@
+package dev.homecontrol.app;
+import org.json.*;
+public final class CameraPlaybackTest {
+ static int count;static void check(boolean b){count++;if(!b)throw new AssertionError("camera playback "+count);}
+ public static void main(String[] args)throws Exception{
+  CameraFrameClock clock=new CameraFrameClock();long start=1_000_000_000L;
+  check(clock.schedule(0,start)==start+100_000_000L);check(clock.schedule(50_000,start+90_000_000L)==start+150_000_000L);check(clock.schedule(100_000,start+190_000_000L)==start+200_000_000L);
+  long resumed=clock.schedule(150_000,start+800_000_000L);check(resumed==start+900_000_000L);check(clock.schedule(200_000,start+850_000_000L)==start+950_000_000L);check(clock.schedule(0,start+900_000_000L)==start+1_000_000_000L);check(clock.schedule(5_000_000,start+1_000_000_000L)==start+1_100_000_000L);
+  JSONObject device=new JSONObject().put("model","chuangmi.camera.069a01");JSONArray caps=new JSONArray();for(String key:CameraSettings.KEYS)caps.put(new JSONObject().put("key",key).put("readable",true).put("writable",true));caps.put(new JSONObject().put("key","p:17:2").put("title","self-check").put("readable",true).put("writable",true));caps.put(new JSONObject().put("key","p:4:1").put("title","storage").put("readable",true).put("writable",true));device.put("capabilities",caps);JSONArray actual=CameraSettings.items(device);check(actual.length()==4);for(int i=0;i<actual.length();i++)check(!CameraSettings.title(actual.getJSONObject(i).getString("key")).isEmpty());caps.getJSONObject(0).put("writable",false);check(CameraSettings.items(device).length()==3);check(CameraSettings.items(new JSONObject(device.toString()).put("model","other.camera")).length()==0);check(CameraSettings.title("p:17:2").isEmpty());
+  JSONObject flip=new JSONObject().put("key","p:2:2").put("format","uint16").put("range",new JSONArray().put(0).put(180).put(180));check(CameraSettings.options(flip).length()==2);check(CameraSettings.options(flip).getJSONObject(1).getInt("value")==180);check(CameraSettings.options(flip).getJSONObject(0).getInt("value")==0);flip.put("range",new JSONArray().put(0).put(90).put(90));check(CameraSettings.options(flip).length()==0);
+  System.out.println(count+" camera pacing/recovery/curated-settings checks passed; no video or writes");
+ }
+}

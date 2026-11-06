@@ -104,6 +104,7 @@ final class HaierCloud {
             JSONArray capabilities=new JSONArray();for(int j=0;j<attributes.length();j++){JSONObject a=attributes.getJSONObject(j);if(KEYS.contains(a.optString("name")))capabilities.put(new JSONObject().put("key",a.optString("name")).put("value",a.opt("value")).put("writable",a.optBoolean("writable")).put("range",a.optJSONObject("valueRange")));}
             boolean online=d.optBoolean("online");String subtitle=(online?"":"离线 · ")+(hood?HaierPolicy.status(values):"海尔设备 · 暂未适配控制");if(hood&&definition==null)subtitle="状态读取失败，请刷新";
             JSONObject item=new JSONObject().put("id",id).put("title",title).put("deviceType",hood?"haier_hood":"haier_device").put("category","haier").put("subtitle",subtitle).put("state",online?1:0).put("battery","").put("icon","").put("updateTime",time).put("capabilitiesTime",time).put("capabilities",capabilities).put("source","haier_cloud");
+            DeviceLocation.copy(remembered.get(id),item);DeviceLocation.copy(DeviceLocation.raw(d),item);
             result.put(HaierSnapshot.retainModel(remembered.get(id),item,definition!=null));
             map.put(id,new JSONObject().put("deviceId",nativeId).put("title",title).put("model",product));
         }

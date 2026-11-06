@@ -14,8 +14,8 @@ final class MijiaCloud {
     private MijiaCloud(Context c,MijiaVault v)throws Exception{context=c.getApplicationContext();vault=v;session=v.read();validate(session);}
     static void validate(JSONObject s)throws Exception{String token=s.optString("serviceToken");if(!s.optString("userId").matches("[0-9]{1,24}")||token.isEmpty()||token.contains("\r")||token.contains("\n")||token.contains(";")||MijiaWire.un64(s.optString("ssecurity")).length<8)throw new Authentication();MijiaWire.api(s.optString("region"));}
     static synchronized boolean loggedIn(Context c)throws Exception{try(MijiaVault v=new MijiaVault(c)){JSONObject s=v.read();if(s.length()==0)return false;validate(s);return true;}}
-    static synchronized void login(Context c,JSONObject session)throws Exception{validate(session);try(MijiaVault v=new MijiaVault(c)){JSONObject old=v.read();if(!old.optString("userId").equals(session.optString("userId"))||!old.optString("region").equals(session.optString("region")))DeviceStore.putPreference(c,"mijia_devices","[]");v.write(session);}DeviceStore.putPreference(c,"mijia_region",session.getString("region"));DeviceStore.putPreference(c,"mijia_auth_state","ready");DeviceStore.putPreference(c,"mijia_error","");}
-    static synchronized void logout(Context c)throws Exception{try(MijiaVault v=new MijiaVault(c)){v.clear();}DeviceStore.putPreference(c,"mijia_devices","[]");DeviceStore.putPreference(c,"mijia_auth_state","logged_out");DeviceStore.putPreference(c,"mijia_error","");DeviceWidget.updateAll(c);}
+    static synchronized void login(Context c,JSONObject session)throws Exception{validate(session);CameraPool.closeAll();try(MijiaVault v=new MijiaVault(c)){JSONObject old=v.read();if(!old.optString("userId").equals(session.optString("userId"))||!old.optString("region").equals(session.optString("region")))DeviceStore.putPreference(c,"mijia_devices","[]");v.write(session);}DeviceStore.putPreference(c,"mijia_region",session.getString("region"));DeviceStore.putPreference(c,"mijia_auth_state","ready");DeviceStore.putPreference(c,"mijia_error","");}
+    static synchronized void logout(Context c)throws Exception{CameraPool.closeAll();try(MijiaVault v=new MijiaVault(c)){v.clear();}DeviceStore.putPreference(c,"mijia_devices","[]");DeviceStore.putPreference(c,"mijia_auth_state","logged_out");DeviceStore.putPreference(c,"mijia_error","");DeviceWidget.updateAll(c);}
     static synchronized void refresh(Context c)throws Exception{try(MijiaVault v=new MijiaVault(c)){new MijiaCloud(c,v).publish();}catch(Authentication e){DeviceStore.putPreference(c,"mijia_auth_state","expired");throw e;}}
     static String summary(Context c){try{if("0".equals(DeviceStore.preference(c,"mijia_sync_time","0")))return "账号已登录，尚未完成设备同步";int count=new JSONArray(DeviceStore.preference(c,"mijia_devices","[]")).length();return count==0?"当前地区未返回设备，请检查账号地区与共享权限":"已同步 "+count+" 台米家设备";}catch(Exception e){return "米家设备尚未同步";}}
     private JSONObject api(String path,JSONObject data)throws Exception{return new MiHomeApi(session).request(path,data);}
@@ -24,18 +24,35 @@ final class MijiaCloud {
         if(list.length()>1000)throw new IOException("设备数量超过本版支持范围，未覆盖现有列表");return list;
     }
     private void publish()throws Exception{
-        JSONArray raw=directory(),items=new JSONArray();JSONObject map=new JSONObject(),old=byId(new JSONArray(DeviceStore.preference(context,"mijia_devices","[]")));long now=System.currentTimeMillis();
+        JSONArray raw=directory(),items=new JSONArray();JSONObject map=new JSONObject(),old=byId(new JSONArray(DeviceStore.preference(context,"mijia_devices","[]"))),locations=locations();long now=System.currentTimeMillis();
         for(int i=0;i<raw.length();i++){JSONObject d=raw.optJSONObject(i);if(d==null)continue;String did=d.optString("did");if(did.isEmpty())continue;String id=DeviceIdentity.mijia(session.getString("userId"),session.getString("region"),did),model=d.optString("model"),name=d.optString("name","米家设备");JSONObject previous=old.optJSONObject(id);boolean online=d.optBoolean("isOnline",false);
             JSONObject item=new JSONObject().put("id",id).put("title",name).put("model",model).put("category","mijia").put("deviceType","mijia_device").put("source","mijia_cloud").put("state",online?1:0).put("subtitle",online?"在线 · 点击操作":"离线 · 暂时无法操作").put("updateTime",now);
+            DeviceLocation.copy(previous,item);DeviceLocation.copy(DeviceLocation.raw(d),item);DeviceLocation.copy(locations.optJSONObject(did),item);
             if(previous!=null)for(String key:new String[]{"capabilities","actions","capabilitiesTime","specType"})if(previous.has(key))item.put(key,previous.opt(key));items.put(item);
-            map.put(id,new JSONObject().put("did",did).put("title",name).put("model",model).put("mac",d.optString("mac")).put("specType",d.optString("spec_type",d.optString("miot_type"))));
+            map.put(id,new JSONObject().put("did",did).put("title",name).put("model",model).put("mac",d.optString("mac")).put("localip",d.optString("localip")).put("specType",d.optString("spec_type",d.optString("miot_type"))));
         }
         session.put("deviceMap",map);vault.write(session);DeviceStore.transaction(context,()->{DeviceStore.putPreference(context,"mijia_devices",items.toString());DeviceStore.putPreference(context,"mijia_sync_time",Long.toString(now));DeviceStore.putPreference(context,"mijia_auth_state","ready");DeviceStore.putPreference(context,"mijia_error","");return null;});
+    }
+    private JSONObject locations()throws Exception{
+        JSONObject saved=session.optJSONObject("homeLocations");long now=System.currentTimeMillis();
+        if(saved!=null&&now-session.optLong("homeLocationsTime")<900000)return saved;
+        if(now-session.optLong("homeLocationsAttempt")<60000)return saved==null?new JSONObject():saved;
+        session.put("homeLocationsAttempt",now);
+        try{JSONObject answer=api("/v2/homeroom/gethome",new JSONObject().put("fg",true).put("fetch_share",true).put("fetch_share_dev",true).put("limit",300).put("app_ver",7)),result=answer.optJSONObject("result");
+            if(result==null||result.optJSONArray("homelist")==null&&result.optJSONArray("share_home_list")==null)throw new IOException("家庭分类响应不兼容");
+            JSONObject parsed=DeviceLocation.homesIndex(result);session.put("homeLocations",parsed).put("homeLocationsTime",now);DeviceStore.putPreference(context,"mijia_location_status",result.optBoolean("has_more")?"家庭分类已部分同步，部分设备暂未分组":"");return parsed;
+        }catch(Authentication e){throw e;}catch(Exception e){DeviceStore.putPreference(context,"mijia_location_status","家庭分类暂未更新，已保留上次位置");return saved==null?new JSONObject():saved;}
     }
     static synchronized JSONObject readDevice(Context c,String id)throws Exception{
         try(MijiaVault v=new MijiaVault(c)){MijiaCloud cloud=new MijiaCloud(c,v);cloud.publish();return cloud.read(id,true);}catch(Authentication e){DeviceStore.putPreference(c,"mijia_auth_state","expired");throw e;}
     }
     private JSONObject record(String id)throws Exception{JSONObject map=session.optJSONObject("deviceMap"),record=map==null?null:map.optJSONObject(id);if(record==null||!id.equals(DeviceIdentity.mijia(session.getString("userId"),session.getString("region"),record.optString("did"))))throw new IOException("此账号或地区未返回该设备，请在设置中检查账号");return record;}
+    static synchronized JSONObject cameraTicket(Context c,String id,String publicKey)throws Exception{
+        if(publicKey==null||!publicKey.matches("[0-9a-f]{64}"))throw new IOException("视频连接密钥无效");
+        try(MijiaVault v=new MijiaVault(c)){MijiaCloud cloud=new MijiaCloud(c,v);JSONObject map=cloud.session.optJSONObject("deviceMap"),device=cached(c,id);if(map==null||map.optJSONObject(id)==null||device==null||device.optInt("state")!=1)cloud.publish();JSONObject record=cloud.record(id);device=cached(c,id);if(!CameraPolicy.supported(record.optString("model")))throw new IOException("此摄像头型号的视频连接仍在适配");if(device==null||device.optInt("state")!=1)throw new IOException("摄像头离线，暂时无法连接视频");
+            JSONObject answer=cloud.api("/v2/device/miss_get_vendor",new JSONObject().put("app_pubkey",publicKey).put("did",record.getString("did")).put("support_vendors","TUTK_CS2_MTP"));return CameraPolicy.config(record,answer.optJSONObject("result"));
+        }
+    }
     static JSONObject cached(Context c,String id){try{JSONArray items=new JSONArray(DeviceStore.preference(c,"mijia_devices","[]"));for(int i=0;i<items.length();i++){JSONObject d=items.optJSONObject(i);if(d!=null&&id.equals(d.optString("id")))return d;}}catch(Exception ignored){}return null;}
     private JSONObject read(String id,boolean fetchValues)throws Exception{
         JSONObject record=record(id),item=cached(context,id);if(item==null)throw new IOException("设备暂时不可用，请刷新设备列表");

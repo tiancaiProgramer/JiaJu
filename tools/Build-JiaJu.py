@@ -11,18 +11,21 @@ def configuration():
     private=ROOT/'private-signing/signing-credentials.json'
     signing=json.loads(private.read_text(encoding='utf-8')) if private.is_file() else {}
     aliases={'JIAJU_KEYSTORE':'KEYSTORE_PATH','JIAJU_KEY_ALIAS':'KEY_ALIAS','JIAJU_KEYSTORE_PASSWORD':'KEYSTORE_PASSWORD','JIAJU_KEY_PASSWORD':'KEY_PASSWORD'}
-    for key in ['JIAJU_JAVA_HOME','JIAJU_ANDROID_SDK','JIAJU_OUTPUT']:
+    for key in ['JIAJU_JAVA_HOME','JIAJU_ANDROID_SDK','JIAJU_OUTPUT','JIAJU_GO_HOME','JIAJU_ANDROID_NDK']:
         if not env.get(key) and config.get(key):env[key]=config[key]
     for key,field in aliases.items():
         if not env.get(key) and signing.get(field):env[key]=signing[field]
     env.setdefault('JIAJU_KEY_ALIAS','fusion')
-    for key in ['JIAJU_JAVA_HOME','JIAJU_ANDROID_SDK','JIAJU_KEYSTORE','JIAJU_OUTPUT']:
+    for key in ['JIAJU_JAVA_HOME','JIAJU_ANDROID_SDK','JIAJU_KEYSTORE','JIAJU_OUTPUT','JIAJU_GO_HOME','JIAJU_ANDROID_NDK']:
         if key in env:
             path=pathlib.Path(env[key]).expanduser()
             env[key]=str(path if path.is_absolute() else ROOT/path)
-    required=['JIAJU_JAVA_HOME','JIAJU_ANDROID_SDK','JIAJU_KEYSTORE','JIAJU_KEYSTORE_PASSWORD']
+    required=['JIAJU_JAVA_HOME','JIAJU_ANDROID_SDK','JIAJU_KEYSTORE','JIAJU_KEYSTORE_PASSWORD','JIAJU_GO_HOME','JIAJU_ANDROID_NDK']
     missing=[key for key in required if not env.get(key)]
     if missing:raise SystemExit('Missing configuration: '+', '.join(missing)+'. See CONTINUATION.md.')
+    go=pathlib.Path(env['JIAJU_GO_HOME'])/'bin/go';ndk=pathlib.Path(env['JIAJU_ANDROID_NDK'])
+    if not go.is_file():raise SystemExit('Missing Go 1.26+ toolchain; update JIAJU_GO_HOME.')
+    if not any((ndk/'toolchains/llvm/prebuilt'/host/'bin/aarch64-linux-android31-clang').is_file() for host in ['darwin-x86_64','linux-x86_64']):raise SystemExit('Missing NDK r26+ compiler; update JIAJU_ANDROID_NDK.')
     jdk=pathlib.Path(env['JIAJU_JAVA_HOME']);sdk=pathlib.Path(env['JIAJU_ANDROID_SDK']);tools=sdk/'build-tools/36.0.0'
     for path in [jdk/'bin/java',jdk/'bin/javac',jdk/'bin/jar',jdk/'bin/keytool',sdk/'platforms/android-35/android.jar',tools/'aapt2',tools/'d8',tools/'zipalign',tools/'apksigner',pathlib.Path(env['JIAJU_KEYSTORE'])]:
         if not path.is_file():raise SystemExit('Missing file; update local/build-environment.json: '+str(path))

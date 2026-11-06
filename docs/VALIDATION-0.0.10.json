@@ -1,0 +1,60 @@
+{
+  "version": "0.0.10",
+  "date": "2026-11-06",
+  "status": "release_snapshot_experiments_disabled",
+  "model": "chuangmi.camera.069a01",
+  "regression_009": {
+    "video_error": "视频连接已中断，请重新连接",
+    "video_error_code": "stream_read_failed_queue_full",
+    "video_frames_received": 2199,
+    "video_frames_rendered": 2199,
+    "video_test_elapsed_ms": 112802
+  },
+  "fixed_native_sustained_test": {
+    "actual_video_decoded": true,
+    "video_command_replies": 17,
+    "video_first_receive_ms": 1492,
+    "video_first_render_ms": 1640,
+    "video_frames_received": 3596,
+    "video_frames_rendered": 3596,
+    "video_relay_renewals": 196,
+    "video_test_elapsed_ms": 181833
+  },
+  "release_checks": {
+    "jvm_checks": 335,
+    "groups": [
+      7,
+      52,
+      15,
+      35,
+      43,
+      22,
+      21,
+      75,
+      29,
+      19,
+      17
+    ],
+    "go_cases": 6,
+    "signer_compatible": true,
+    "diff_check": true
+  },
+  "experiments": {
+    "early_media_ready_handshake": "enabled; covered by three-minute native test",
+    "reply_channel_drain": "enabled; 17 replies drained, 3596 rendered frames over approximately 180 seconds",
+    "short_foreground_reuse": "source retained; default disabled",
+    "automatic_recovery": "source retained; default disabled",
+    "final_ui_trial": "interrupted when phone disconnected at about 75 seconds; not a completed acceptance test"
+  },
+  "release_apk_sha256": "f3422d355e05784a9eacf8057ba85716160b0b7b7665d13f76b293dafb9a5ae9",
+  "final_apk_installed_after_disconnection": false,
+  "temporary_checker_removed": false,
+  "phone_cleanup_next_session": "adb uninstall dev.homecontrol.tests",
+  "physical_settings_written": false,
+  "video_saved_or_exported": false,
+  "limitations": [
+    "Three-minute native stream test establishes this short run, not indefinite reliability",
+    "Final default-off release rebuild passed local tests but could not be reinstalled after the phone disconnected",
+    "Reuse/recovery, HD long sessions, network switching and other camera models need later on-device validation"
+  ]
+}

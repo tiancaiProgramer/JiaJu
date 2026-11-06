@@ -29,6 +29,9 @@ final class DisplayPreferences {
             JSONObject data = new JSONObject(saved);
             result.pinned.addAll(array(data.optJSONArray("pinned")));
             result.hidden.addAll(array(data.optJSONArray("hidden"))); result.hidden.remove(DevicePresentation.HIDDEN);
+            result.excluded.addAll(array(data.optJSONArray("excluded")));result.excluded.remove(DevicePresentation.HIDDEN);
+            result.hidden.removeAll(result.excluded);result.pinned.removeAll(result.excluded);result.pinned.removeAll(result.hidden);
+            result.hiddenModuleVisible=data.optBoolean("hiddenModuleVisible",true);
             result.allOrder.addAll(array(data.optJSONArray("allOrder")));
             result.hiddenOrder.addAll(array(data.optJSONArray("hiddenOrder")));
             if (result.discover(ids)) save(result);
@@ -47,6 +50,9 @@ final class DisplayPreferences {
     void move(String scope, String source, String target) {
         synchronized (LOCK) { DeviceStore.transaction(context, () -> { DevicePresentation model = read(DeviceStore.devices(context)); if (model.move(scope, source, target)) save(model); return null; }); }
     }
+    void place(String id,String value) {
+        synchronized(LOCK){DeviceStore.transaction(context,()->{DevicePresentation model=read(DeviceStore.devices(context));model.place(id,value);save(model);DeviceStore.remember(context,DeviceStore.devices(context));return null;});}
+    }
     List<JSONObject> selected(JSONArray snapshot) {
         DevicePresentation model = layout(snapshot); Map<String,JSONObject> byId = new LinkedHashMap<>();
         for (int i = 0; i < snapshot.length(); i++) { JSONObject d = snapshot.optJSONObject(i); if (d != null) byId.put(d.optString("id"), d); }
@@ -64,6 +70,7 @@ final class DisplayPreferences {
         JSONObject data = new JSONObject();
         try {
             data.put("pinned", new JSONArray(model.pinned)); data.put("hidden", new JSONArray(model.hidden));
+            data.put("excluded",new JSONArray(model.excluded));data.put("hiddenModuleVisible",model.hiddenModuleVisible);
             data.put("allOrder", new JSONArray(model.allOrder)); data.put("hiddenOrder", new JSONArray(model.hiddenOrder));
             DeviceStore.putPreference(context, KEY, data.toString());
         } catch (JSONException e) { throw new IllegalStateException(e); }

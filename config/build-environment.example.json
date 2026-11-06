@@ -1,4 +1,6 @@
 {
   "JIAJU_JAVA_HOME": "/path/to/jdk17",
-  "JIAJU_ANDROID_SDK": "/path/to/android-sdk"
+  "JIAJU_ANDROID_SDK": "/path/to/android-sdk",
+  "JIAJU_GO_HOME": "/path/to/go",
+  "JIAJU_ANDROID_NDK": "/path/to/android-ndk"
 }

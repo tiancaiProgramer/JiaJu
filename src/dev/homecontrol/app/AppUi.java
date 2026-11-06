@@ -12,7 +12,7 @@ final class AppUi {
         android.view.Window window=activity.getWindow();window.setDecorFitsSystemWindows(false);window.setStatusBarColor(Color.TRANSPARENT);window.setNavigationBarColor(Color.TRANSPARENT);window.getDecorView();android.view.WindowInsetsController bars=window.getInsetsController();
         if(bars!=null){int flags=android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS|android.view.WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS;boolean night=(activity.getResources().getConfiguration().uiMode&android.content.res.Configuration.UI_MODE_NIGHT_MASK)==android.content.res.Configuration.UI_MODE_NIGHT_YES;bars.setSystemBarsAppearance(night?0:flags,flags);}
     }
-    static final int REFRESH=0, SETTINGS=1, MORE=2, HELP=3, DOWN=4, UP=5, RIGHT=6, OUT=7, NEGATIVE=8, DESKTOP=9, DEVICES=10, BACK=11, HIDDEN=12, DRAG=13;
+    static final int REFRESH=0, SETTINGS=1, MORE=2, HELP=3, DOWN=4, UP=5, RIGHT=6, OUT=7, NEGATIVE=8, DESKTOP=9, DEVICES=10, BACK=11, HIDDEN=12, DRAG=13, ADD=14, EYE_OFF=15, PLAY=16, PAUSE=17, FULLSCREEN=18, COLLAPSE_SCREEN=19;
     final Context context;
     final int background, surface, text, muted, accent, pale, line;
     AppUi(Context context) {
@@ -45,6 +45,10 @@ final class AppUi {
             p.setColor(color);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.8f);p.setStrokeCap(Paint.Cap.ROUND);p.setStrokeJoin(Paint.Join.ROUND);
             Path path=new Path();
             switch(kind) {
+                case PLAY:path.moveTo(8,4);path.lineTo(20,12);path.lineTo(8,20);path.close();break;
+                case PAUSE:c.drawLine(8,5,8,19,p);c.drawLine(16,5,16,19,p);break;
+                case FULLSCREEN:path.moveTo(9,4);path.lineTo(4,4);path.lineTo(4,9);path.moveTo(15,4);path.lineTo(20,4);path.lineTo(20,9);path.moveTo(4,15);path.lineTo(4,20);path.lineTo(9,20);path.moveTo(20,15);path.lineTo(20,20);path.lineTo(15,20);break;
+                case COLLAPSE_SCREEN:path.moveTo(4,9);path.lineTo(9,9);path.lineTo(9,4);path.moveTo(15,4);path.lineTo(15,9);path.lineTo(20,9);path.moveTo(4,15);path.lineTo(9,15);path.lineTo(9,20);path.moveTo(15,20);path.lineTo(15,15);path.lineTo(20,15);break;
                 case REFRESH:c.drawArc(4,4,20,20,35,275,false,p);path.moveTo(20,4);path.lineTo(20,9);path.lineTo(15,9);break;
                 case SETTINGS:for(int i=0;i<3;i++){float y=6+i*6;c.drawLine(3,y,21,y,p);p.setStyle(Paint.Style.FILL);c.drawCircle(i==1?8:16,y,2.5f,p);p.setStyle(Paint.Style.STROKE);}break;
                 case MORE:p.setStyle(Paint.Style.FILL);for(int i=0;i<3;i++)c.drawCircle(5+i*7,12,1.5f,p);break;
@@ -55,6 +59,8 @@ final class AppUi {
                 case BACK:path.moveTo(15,5);path.lineTo(8,12);path.lineTo(15,19);break;
                 case HIDDEN:path.moveTo(3,7);path.lineTo(3,20);path.lineTo(21,20);path.lineTo(21,7);path.lineTo(11,7);path.lineTo(9,4);path.lineTo(3,4);path.close();c.drawLine(9,13,15,13,p);break;
                 case DRAG:c.drawLine(5,7,19,7,p);c.drawLine(5,12,19,12,p);c.drawLine(5,17,19,17,p);break;
+                case ADD:c.drawLine(12,5,12,19,p);c.drawLine(5,12,19,12,p);break;
+                case EYE_OFF:c.drawOval(2,6,22,18,p);c.drawCircle(12,12,3,p);c.drawLine(3,3,21,21,p);break;
                 case OUT:path.moveTo(6,18);path.lineTo(18,6);path.moveTo(8,6);path.lineTo(18,6);path.lineTo(18,16);break;
                 case NEGATIVE:c.drawRoundRect(3,3,10,10,1.5f,1.5f,p);c.drawRoundRect(14,3,21,10,1.5f,1.5f,p);c.drawRoundRect(3,14,10,21,1.5f,1.5f,p);c.drawLine(17.5f,14,17.5f,21,p);c.drawLine(14,17.5f,21,17.5f,p);break;
                 case DESKTOP:c.drawRoundRect(2,4,22,20,2,2,p);c.drawLine(2,9,22,9,p);c.drawRoundRect(6,12,11,17,1,1,p);c.drawLine(14,13,18,13,p);c.drawLine(14,16,18,16,p);break;

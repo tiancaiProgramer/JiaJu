@@ -2,8 +2,8 @@
 
 ## 公开源码构建
 
-1. 安装 Python 3.9+、Git、JDK 17、Android SDK platform 35 / build-tools 36.0.0。
-2. 将 `config/build-environment.example.json` 复制为 `local/build-environment.json`，修改 JDK/SDK 的实际路径。macOS 的 JDK 路径通常以 `Contents/Home` 结尾，Linux 使用 JDK 根目录。
+1. 安装 Python 3.9+、Git、JDK 17、Android SDK platform 35 / build-tools 36.0.0、Go 1.26+ 及 Android NDK r26+。
+2. 将 `config/build-environment.example.json` 复制为 `local/build-environment.json`，修改 JDK/SDK、`JIAJU_GO_HOME` 和 `JIAJU_ANDROID_NDK` 的实际路径。macOS 的 JDK 路径通常以 `Contents/Home` 结尾，Linux 使用 JDK 根目录。
 3. 使用自己的 Android 签名，设置 `JIAJU_KEYSTORE`、`JIAJU_KEY_ALIAS`、`JIAJU_KEYSTORE_PASSWORD`，必要时设置 `JIAJU_KEY_PASSWORD`。也可放在本机的 `private-signing/signing-credentials.json` 中，格式见下方。不要提交真实凭据。
 4. 执行 `python3 tools/Build-JiaJu.py --check`，然后执行 `python3 tools/Build-JiaJu.py`。产物写入 `dist/`。
 
@@ -27,7 +27,7 @@
 - 同一份 Android 签名密钥与本机口令配置。
 - 本机工具链路径、开发交接说明、恢复和构建脚本。
 
-不包含 SDK/JDK、GitHub 登录凭据、米家/海尔会话、手机数据库或官方插件研究文件。
+不包含 SDK/JDK/Go/NDK、GitHub 登录凭据、米家/海尔会话、手机数据库或官方插件研究文件。
 
 解压后在包目录执行：
 

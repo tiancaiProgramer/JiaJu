@@ -19,7 +19,7 @@ final class MiHomeApi {
         int code=answer.optInt("code",Integer.MIN_VALUE);if(code==3||code==-3||code==401||code==-10001)throw new MijiaCloud.Authentication();if(code!=0)throw new IOException("米家请求未成功（"+code+"）");return answer;
     }
     static boolean allowed(String path){
-        if(Arrays.asList("/home/device_list","/v2/homeroom/gethome","/v2/home/home_device_list","/miotspec/prop/get","/miotspec/prop/set","/miotspec/action","/scene/list","/scene/get","/scene/edit","/scene/delete").contains(path))return true;
+        if(Arrays.asList("/home/device_list","/v2/device/miss_get_vendor","/v2/homeroom/gethome","/v2/home/home_device_list","/miotspec/prop/get","/miotspec/prop/set","/miotspec/action","/scene/list","/scene/get","/scene/edit","/scene/delete").contains(path))return true;
         if(path.matches("/home/rpc/[A-Za-z0-9_.:-]{1,96}"))return true;
         return path.matches("/eco/(cm-microwaveoven/v2|mijia-pot-service|microwaveoven)/[A-Za-z0-9_./-]{1,220}")&&!path.contains("..");
     }

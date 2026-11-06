@@ -1,0 +1,72 @@
+{
+  "version": "0.0.9",
+  "date": "2026-11-06",
+  "model": "chuangmi.camera.069a01",
+  "issue": "Long wait before first picture on another network",
+  "old_008_native": {
+    "actual_video_decoded": true,
+    "video_first_receive_ms": 9112,
+    "video_first_render_ms": 9292,
+    "video_phase_times": [
+      "26ms: 正在取得视频授权…",
+      "470ms: 正在连接摄像头…",
+      "5474ms: 正在连接跨网络视频通道…",
+      "9023ms: 已连接，等待实时画面…"
+    ]
+  },
+  "intermediate_009_skip_lan_only": {
+    "actual_video_decoded": true,
+    "video_first_receive_ms": 4167,
+    "video_first_render_ms": 4296,
+    "video_phase_times": [
+      "14ms: 正在取得视频授权…",
+      "125ms: 正在连接摄像头…",
+      "128ms: 正在连接跨网络视频通道…",
+      "3708ms: 已连接，等待实时画面…"
+    ]
+  },
+  "final_009_native": {
+    "actual_video_decoded": true,
+    "video_first_receive_ms": 2582,
+    "video_first_render_ms": 2737,
+    "video_phase_times": [
+      "18ms: 正在取得视频授权…",
+      "150ms: 正在连接摄像头…",
+      "152ms: 正在连接跨网络视频通道…",
+      "2242ms: 已连接，等待实时画面…"
+    ]
+  },
+  "final_009_real_page": {
+    "camera_ui_continuous_rendering": true,
+    "camera_ui_disconnect_on_exit": true,
+    "camera_ui_first_frame_ms": 2423,
+    "camera_ui_frames_initial": 3,
+    "camera_ui_frames_later": 103,
+    "camera_ui_layout_unchanged": true,
+    "camera_ui_route_correct": true,
+    "camera_ui_status_overlay_hidden": true,
+    "camera_ui_surface_height": 608,
+    "camera_ui_surface_width": 1080,
+    "screen_render_duration_ms": 9915,
+    "screen_render_fps": 10.0,
+    "screen_render_gap_max_ms": 109,
+    "screen_render_gap_p95_ms": 107
+  },
+  "checks": {
+    "jvm_assertions": 318,
+    "go_cases": 4,
+    "diff_check": true,
+    "signer_compatible": true
+  },
+  "apk_sha256": "f74930c9841fc8a1abe43b01ea5d8e839784d1ef945a1183213a615627413449",
+  "installed": true,
+  "temporary_checker_removed": true,
+  "physical_settings_written": false,
+  "video_saved_or_exported": false,
+  "measurement_limits": [
+    "Small number of warm-session tests on this network, not a startup percentile or guarantee",
+    "Native decoder callback time and real Activity observation are different measurements; no exact percentage comparison",
+    "UI timing begins at Activity launch request and polls rendered callback count every 25ms; callback delivery may be batched",
+    "Does not measure glass-to-glass live latency or the official app internals"
+  ]
+}

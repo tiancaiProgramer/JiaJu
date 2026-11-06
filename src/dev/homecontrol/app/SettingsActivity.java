@@ -13,7 +13,7 @@ public final class SettingsActivity extends AppPage {
     private String screen="settings";
     private final Handler main=new Handler(Looper.getMainLooper());
     private boolean foreground;
-    @Override public void onCreate(Bundle state) {super.onCreate(state);if(state!=null)screen=state.getString("screen","settings");render();}
+    @Override public void onCreate(Bundle state) {super.onCreate(state);screen=getIntent().getStringExtra("screen");if(screen==null)screen="settings";if(state!=null)screen=state.getString("screen","settings");render();}
     @Override protected void onSaveInstanceState(Bundle state) {super.onSaveInstanceState(state);state.putString("screen",screen);}
     @Override protected void onResume(){super.onResume();foreground=true;}
     @Override protected void onPause(){foreground=false;super.onPause();}

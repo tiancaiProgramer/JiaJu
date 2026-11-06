@@ -17,6 +17,7 @@ env['JIAJU_SIGN_KEY_PASSWORD']=option('JIAJU_KEY_PASSWORD',default=env['JIAJU_SI
 def run(*args):subprocess.run([str(a) for a in args],cwd=P,env=env,check=True)
 if BUILD.exists():shutil.rmtree(BUILD)
 for d in [BUILD/'generated/dev/homecontrol/app',BUILD/'classes',BUILD/'tests',BUILD/'dex',OUT]:d.mkdir(parents=True,exist_ok=True)
+run(os.sys.executable,P/'native-camera/build.py')
 run(JDK/'bin/keytool','-exportcert','-keystore',KEY,'-storepass:env','JIAJU_SIGN_STORE_PASSWORD','-alias',ALIAS,'-file',BUILD/'certificate.der')
 digest=hashlib.sha256((BUILD/'certificate.der').read_bytes()).hexdigest()
 (BUILD/'generated/dev/homecontrol/app/BuildIdentity.java').write_text('package dev.homecontrol.app; final class BuildIdentity {static final String CERT_SHA256="'+digest+'",VERSION_NAME='+json.dumps(VERSION)+';}')
@@ -27,11 +28,12 @@ run(JDK/'bin/javac','-encoding','UTF-8','-source','8','-target','8','-Xlint:-opt
 JSON_TEST=P/'tests/lib/android-json.jar'
 if hashlib.sha256(JSON_TEST.read_bytes()).hexdigest()!='dfb7bae2f404cfe0b72b4d23944698cb716b7665171812a0a4d0f5926c0fac79':raise RuntimeError('Test JSON runtime checksum mismatch')
 run(JDK/'bin/javac','-encoding','UTF-8','-classpath',str(BUILD/'classes')+os.pathsep+str(JSON_TEST),'-d',BUILD/'tests',*sorted((P/'tests').glob('*.java')))
-for test in ['HaierTest','HaierWireTest','HaierPanelQueueTest','PresentationTest','MijiaWireTest','MijiaModelTest','MijiaCommandTest','FeaturesTest']:run(JDK/'bin/java','-cp',str(BUILD/'classes')+os.pathsep+str(BUILD/'tests')+os.pathsep+str(JSON_TEST),'dev.homecontrol.app.'+test)
+for test in ['HaierTest','HaierWireTest','HaierPanelQueueTest','PresentationTest','MijiaWireTest','MijiaModelTest','MijiaCommandTest','FeaturesTest','CameraPolicyTest','CameraPlaybackTest','CameraReuseTest']:run(JDK/'bin/java','-cp',str(BUILD/'classes')+os.pathsep+str(BUILD/'tests')+os.pathsep+str(JSON_TEST),'dev.homecontrol.app.'+test)
 run(JDK/'bin/jar','cf',BUILD/'app.jar','-C',BUILD/'classes','.')
 run(TOOLS/'d8','--min-api','31','--lib',ANDROID,'--output',BUILD/'dex',BUILD/'app.jar')
 with zipfile.ZipFile(BUILD/'unsigned.apk','a',zipfile.ZIP_DEFLATED) as z:
     for d in (BUILD/'dex').glob('*.dex'):z.write(d,d.name)
+    for library in (BUILD/'native').rglob('*.so'):z.write(library,'lib/'+library.relative_to(BUILD/'native').as_posix())
     for r in (P/'resources').rglob('*'):
         if r.is_file():z.write(r,r.relative_to(P/'resources').as_posix())
 run(TOOLS/'zipalign','-f','4',BUILD/'unsigned.apk',BUILD/'aligned.apk')
