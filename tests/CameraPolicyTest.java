@@ -11,6 +11,8 @@ public final class CameraPolicyTest {
   String hex="0000000000000000000000000000000000000000000000000000000000000000";
   JSONObject ticket=new JSONObject().put("public_key",hex).put("sign",hex).put("vendor",new JSONObject().put("vendor",4));
   JSONObject cfg=CameraPolicy.config(device,ticket);check(cfg.getString("host").equals("192.168.1.1"));check(!cfg.has("did")&&!cfg.has("token")&&!cfg.has("serviceToken"));
+  for(String model:new String[]{"chuangmi.camera.039c01","xiaomi.camera.c302"}){JSONObject expanded=new JSONObject(device.toString()).put("model",model);check(CameraPolicy.config(expanded,ticket).getString("model").equals(model));reject(()->CameraPolicy.config(expanded,new JSONObject(ticket.toString()).put("vendor",new JSONObject().put("vendor",1))));reject(()->CameraPolicy.config(expanded,new JSONObject(ticket.toString()).put("public_key","invalid")));}
+  for(String model:new String[]{"chuangmi.camera.039a01","chuangmi.camera.029a02","xiaomi.camera.c302n","chuangmi.camera.039c01.extra"})reject(()->CameraPolicy.config(new JSONObject(device.toString()).put("model",model),ticket));
   reject(()->CameraPolicy.config(new JSONObject(device.toString()).put("model","other.camera.model"),ticket));reject(()->CameraPolicy.config(device,null));reject(()->CameraPolicy.config(device,new JSONObject(ticket.toString()).put("sign","invalid")));
   reject(()->CameraPolicy.config(device,new JSONObject(ticket.toString()).put("vendor",new JSONObject().put("vendor",1))));reject(()->CameraPolicy.config(new JSONObject(device.toString()).put("localip","127.0.0.1"),ticket));
   ticket.getJSONObject("vendor").put("vendor_params",new JSONObject().put("p2p_id","FIXTURE-1-TEST").put("init_string","fixture-initializer"));

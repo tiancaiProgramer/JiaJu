@@ -6,9 +6,10 @@ import java.util.*;
 final class MijiaFeatures {
     private final JSONObject current;private final MiHomeApi api;private final JSONObject record;private final String did,model,user,region;
     MijiaFeatures(MiHomeApi api,JSONObject record,String region,String user,JSONObject current)throws Exception{this.current=current;this.api=api;this.record=record;did=record.getString("did");model=record.getString("model");this.region=region;this.user=user;}
-    static boolean mutates(String op){return Arrays.asList("kitchen.start","recipes.favorite","light.delay.set","light.delay.remove","light.timers.create","light.timers.toggle","light.timers.delete").contains(op);}
-    static boolean requiresOnline(String op){return op.startsWith("light.delay.")||op.equals("kitchen.start");}
+    static boolean mutates(String op){return Arrays.asList("kitchen.start","recipes.favorite","light.delay.set","light.delay.remove","light.timers.create","light.timers.toggle","light.timers.delete","camera.nas.set").contains(op);}
+    static boolean requiresOnline(String op){return op.startsWith("light.delay.")||op.equals("kitchen.start")||op.startsWith("camera.nas.");}
     Object run(String operation,JSONObject input)throws Exception{
+        if(operation.startsWith("camera.nas.")){String method=CameraNas.method(model,operation);Object params=CameraNas.params(operation,input);if(!did.matches("[A-Za-z0-9_.:-]{1,96}"))throw new IOException("设备标识无效");return api.request("/home/rpc/"+did,new JSONObject().put("method",method).put("params",params));}
         if(operation.startsWith("recipes."))return recipes(operation,input);
         if(operation.equals("kitchen.prepare")){JSONObject item=selected(input);return decodeProgram(item).describe(item.optString("name","烹饪菜单"));}
         if(operation.equals("kitchen.start"))return start(input);

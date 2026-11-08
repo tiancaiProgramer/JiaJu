@@ -1,0 +1,42 @@
+{
+  "model": "chuangmi.camera.069a01",
+  "model_index": 2,
+  "watch_seconds": 30,
+  "started_utc": "2026-11-06T14:32:29.944007+00:00",
+  "apk_sha256": "a32a6d140572526e3c05899d6fadd652d86e1dfe81eb7d85fc2cdf74bf536297",
+  "apk_path": "dist\\windows-20261106-multicamera-final\\JiaJu-0.0.11.apk",
+  "passed": false,
+  "missing_checks": [
+    "continuous_rendering",
+    "status_overlay_hidden",
+    "same_session_during_watch",
+    "fullscreen_landscape",
+    "fullscreen_same_session",
+    "fullscreen_keeps_playing",
+    "back_exits_fullscreen",
+    "exit_fullscreen_same_session",
+    "settings_same_session",
+    "flip_degree_choices",
+    "disconnect_on_exit"
+  ],
+  "timed_out": false,
+  "adb_launch_codes": [
+    0
+  ],
+  "progress": [],
+  "progress_advancing": true,
+  "watch_complete": false,
+  "results": {
+    "camera_model": "chuangmi.camera.069a01",
+    "camera_ui_error": "暂时无法建立视频连接，请检查网络后重新连接",
+    "camera_ui_first_frame_ms": -1,
+    "camera_ui_layout_unchanged": true,
+    "camera_ui_route_correct": true,
+    "error": "监控界面检查未通过：camera_ui_continuous_rendering",
+    "haier_devices": 1,
+    "logged_in": true,
+    "mijia_devices": 50,
+    "physical_commands_sent": false,
+    "video_saved_to_storage": false
+  }
+}

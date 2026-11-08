@@ -1,0 +1,19 @@
+{
+  "apk_sha256": "3e1970ac5dcbb3d593a60335491aaf6f3c46265fde98a8fd85752f221959c367",
+  "instrumentation_success": true,
+  "results": {
+    "cycle_custom_time_fields": 2,
+    "layout_unchanged": true,
+    "panel_results": [
+      {
+        "model": "cuco.plug.v3",
+        "telemetry_one_line": true,
+        "more_initially_hidden": true,
+        "more_opens": true,
+        "editors_opened_cancelled": 11,
+        "stable_after_poll": true
+      }
+    ],
+    "physical_commands_sent": false
+  }
+}

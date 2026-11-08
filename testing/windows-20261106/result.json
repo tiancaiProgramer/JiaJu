@@ -1,0 +1,61 @@
+{
+  "date": "2026-11-06",
+  "project": "JiaJu",
+  "source_remote": "https://github.com/tiancaiProgramer/JiaJu.git",
+  "source_base_commit": "6158d4b5bf74dfdcbd7cb876436b8483f29ff310",
+  "local_changes": "Windows build support; application behavior and version unchanged; uncommitted and not pushed",
+  "toolchain": {
+    "python": "3.12",
+    "jdk": "17.0.20.1",
+    "android_platform": 35,
+    "android_build_tools": "36.0.0",
+    "go": "1.26.10",
+    "ndk": "28.2.13676358",
+    "host": "windows/amd64",
+    "target": "android/arm64 API 31"
+  },
+  "checks": {
+    "configuration_and_original_signer": true,
+    "python_host_command_tests": 7,
+    "jvm_assertions": 335,
+    "go_test_functions": 6,
+    "app_build": true,
+    "instrumentation_build": true,
+    "app_v3_signature_verified": true,
+    "instrumentation_signature_verified": true,
+    "zip_alignment_4_bytes": true,
+    "embedded_elf_load_alignment_16kb": true,
+    "packaged_native_matches_build": true,
+    "private_material_not_packaged": true,
+    "device_install_or_execution": false
+  },
+  "certificate_sha256": "90fdd03f6335597acdd3b1068774f331a7112a8241b1176d52152cf6c65a4f1f",
+  "artifacts": [
+    {
+      "path": "dist/windows-20261106/JiaJu-0.0.10.apk",
+      "size": 1488214,
+      "sha256": "d8876c82fc0bde9259bc17c8f3794f70556127266240e6f5a47ab9606a549b3f"
+    },
+    {
+      "path": "build/device-check/JiaJuReadCheck.apk",
+      "size": 37263,
+      "sha256": "f79332250498da38a95fb3a8a0370874292bc97677009d15137223d10dd2382a"
+    }
+  ],
+  "notes": [
+    "Original NAS archive and release APK retained.",
+    "Original Mac build path configuration copied to local/original-nas-build-environment.json.",
+    "Extracted NAS checksums describe original files; local tool/config changes intentionally differ.",
+    "Camera reuse and auto-recovery remain disabled; no phone, account or physical device test performed.",
+    "Existing macOS/Linux command selection unit-tested; full builds on those hosts were not rerun."
+  ],
+  "go_download_metadata": {
+    "filename": "go1.26.10.windows-amd64.zip",
+    "os": "windows",
+    "arch": "amd64",
+    "version": "go1.26.10",
+    "sha256": "7ecd2d7260e82c59bcbd7f1077a07cee2dea607295b858df67195a1e4e09629b",
+    "size": 75004774,
+    "kind": "archive"
+  }
+}

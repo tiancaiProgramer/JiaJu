@@ -1,0 +1,65 @@
+{
+  "model": "xiaomi.camera.c302",
+  "model_index": 0,
+  "watch_seconds": 15,
+  "started_utc": "2026-11-08T01:35:00.613817+00:00",
+  "apk_sha256": "234bfc719858e1aeffb828ceeba4df126cf45c9778b0652f60126e67ec289478",
+  "apk_path": "dist\\windows-20261108-panels\\JiaJu-0.0.12.apk",
+  "passed": true,
+  "missing_checks": [],
+  "timed_out": false,
+  "adb_launch_codes": [
+    0
+  ],
+  "progress": [
+    {
+      "rendered": 304,
+      "watch_ms": 15020
+    }
+  ],
+  "progress_advancing": true,
+  "watch_complete": true,
+  "results": {
+    "camera_model": "xiaomi.camera.c302",
+    "camera_ui_action_buttons": true,
+    "camera_ui_back_exits_fullscreen": true,
+    "camera_ui_command_replies": 1,
+    "camera_ui_continuous_rendering": true,
+    "camera_ui_curated_setting_count": 4,
+    "camera_ui_disconnect_on_exit": true,
+    "camera_ui_exit_fullscreen_same_session": true,
+    "camera_ui_first_frame_ms": 2028,
+    "camera_ui_flip_degree_choices": true,
+    "camera_ui_frames_initial": 4,
+    "camera_ui_frames_later": 304,
+    "camera_ui_fullscreen_keeps_playing": true,
+    "camera_ui_fullscreen_landscape": true,
+    "camera_ui_fullscreen_same_session": true,
+    "camera_ui_fullscreen_surface_height": 1080,
+    "camera_ui_fullscreen_surface_width": 1920,
+    "camera_ui_handoff_attempts": 1,
+    "camera_ui_layout_unchanged": true,
+    "camera_ui_portrait_toolbar_below_video": true,
+    "camera_ui_route_correct": true,
+    "camera_ui_same_session_during_watch": true,
+    "camera_ui_setting_keys": [
+      "p:2:3",
+      "p:2:4",
+      "p:2:5",
+      "p:4:1"
+    ],
+    "camera_ui_settings_same_session": true,
+    "camera_ui_status_overlay_hidden": true,
+    "camera_ui_surface_height": 608,
+    "camera_ui_surface_width": 1080,
+    "haier_devices": 1,
+    "logged_in": true,
+    "mijia_devices": 50,
+    "physical_commands_sent": false,
+    "screen_render_duration_ms": 14983,
+    "screen_render_fps": 20.0,
+    "screen_render_gap_max_ms": 514,
+    "screen_render_gap_p95_ms": 187,
+    "video_saved_to_storage": false
+  }
+}

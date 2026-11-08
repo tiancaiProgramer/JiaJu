@@ -1,0 +1,56 @@
+{
+  "model": "chuangmi.camera.039c01",
+  "apk_sha256": "a32a6d140572526e3c05899d6fadd652d86e1dfe81eb7d85fc2cdf74bf536297",
+  "progress": [
+    {
+      "watch_ms": 15016,
+      "rendered": 237
+    },
+    {
+      "watch_ms": 30035,
+      "rendered": 461
+    },
+    {
+      "watch_ms": 45059,
+      "rendered": 686
+    },
+    {
+      "watch_ms": 60082,
+      "rendered": 911
+    },
+    {
+      "watch_ms": 75104,
+      "rendered": 1137
+    },
+    {
+      "watch_ms": 90122,
+      "rendered": 1361
+    },
+    {
+      "watch_ms": 105142,
+      "rendered": 1587
+    },
+    {
+      "watch_ms": 120164,
+      "rendered": 1812
+    },
+    {
+      "watch_ms": 135185,
+      "rendered": 2038
+    },
+    {
+      "watch_ms": 150203,
+      "rendered": 2261
+    },
+    {
+      "watch_ms": 165226,
+      "rendered": 2487
+    },
+    {
+      "watch_ms": 180247,
+      "rendered": 2712
+    }
+  ],
+  "all_progress_samples_advance": true,
+  "watch_complete": true
+}

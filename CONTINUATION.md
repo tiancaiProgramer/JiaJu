@@ -3,7 +3,7 @@
 ## 公开源码构建
 
 1. 安装 Python 3.9+、Git、JDK 17、Android SDK platform 35 / build-tools 36.0.0、Go 1.26+ 及 Android NDK r26+。
-2. 将 `config/build-environment.example.json` 复制为 `local/build-environment.json`，修改 JDK/SDK、`JIAJU_GO_HOME` 和 `JIAJU_ANDROID_NDK` 的实际路径。macOS 的 JDK 路径通常以 `Contents/Home` 结尾，Linux 使用 JDK 根目录。
+2. 将 `config/build-environment.example.json` 复制为 `local/build-environment.json`，修改 JDK/SDK、`JIAJU_GO_HOME` 和 `JIAJU_ANDROID_NDK` 的实际路径。macOS 的 JDK 路径通常以 `Contents/Home` 结尾，Linux 与 Windows 使用 JDK 根目录。Windows 使用 Windows 版工具链，JSON 路径可写成 `G:/tools/jdk17`；Go 路径应指向含 `bin/go.exe` 的目录，NDK 指向含 `toolchains/llvm/prebuilt/windows-x86_64` 的目录。
 3. 使用自己的 Android 签名，设置 `JIAJU_KEYSTORE`、`JIAJU_KEY_ALIAS`、`JIAJU_KEYSTORE_PASSWORD`，必要时设置 `JIAJU_KEY_PASSWORD`。也可放在本机的 `private-signing/signing-credentials.json` 中，格式见下方。不要提交真实凭据。
 4. 执行 `python3 tools/Build-JiaJu.py --check`，然后执行 `python3 tools/Build-JiaJu.py`。产物写入 `dist/`。
 
@@ -40,4 +40,6 @@ python3 tools/Restore-JiaJu.py /新的目录/JiaJu
 
 进入新项目，修改 `local/build-environment.json`，再运行构建检查及构建。保存的 APK 位于 `.local/saved-release/`。
 
-macOS/Linux 为当前构建环境。Windows 原生路径与 SDK 启动器尚未验证，建议在 WSL 中使用 Linux JDK/SDK，不能直接复用 macOS 的工具链二进制文件。后续 GitHub 推送需要自行登录，不会从 NAS 包恢复 GitHub 账号。
+支持 macOS/Linux 和 Windows 原生工具链。Windows 在 PowerShell 中使用 `python` 替代上述 `python3`；构建会选择 `.exe`，D8 与 apksigner 直接由 JDK 运行 SDK 附带的 JAR，NDK 使用 Windows clang 并指定 Android arm64/API 31 目标。各系统使用对应系统的工具链，不能复用 macOS 的二进制文件。正常构建先运行工具命令选择检查，再运行 Go 与 JVM 检查。
+
+后续 GitHub 推送需要自行登录，不会从 NAS 包恢复 GitHub 账号。便携工具链可放在已排除提交的 `tools/toolchains/`，共享 SDK/JDK/NDK 也可通过本地配置引用。

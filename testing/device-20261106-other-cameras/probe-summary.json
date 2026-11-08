@@ -1,0 +1,72 @@
+[
+  {
+    "camera_device_key_length": "64",
+    "camera_init_length": "84",
+    "camera_local_tcp_reachable": "false",
+    "camera_model": "chuangmi.camera.069a01",
+    "camera_p2p_present": "true",
+    "camera_same_subnet": "false",
+    "camera_signature_length": "64",
+    "camera_ticket_code": "0",
+    "camera_vendor": "4",
+    "index": 1,
+    "model": "chuangmi.camera.069a01",
+    "cached_online": true
+  },
+  {
+    "camera_device_key_length": "64",
+    "camera_init_length": "84",
+    "camera_local_tcp_reachable": "false",
+    "camera_model": "chuangmi.camera.039c01",
+    "camera_p2p_present": "true",
+    "camera_same_subnet": "false",
+    "camera_signature_length": "64",
+    "camera_ticket_code": "0",
+    "camera_vendor": "4",
+    "index": 2,
+    "model": "chuangmi.camera.039c01",
+    "cached_online": true
+  },
+  {
+    "camera_device_key_length": "64",
+    "camera_init_length": "82",
+    "camera_local_tcp_reachable": "false",
+    "camera_model": "xiaomi.camera.c302",
+    "camera_p2p_present": "true",
+    "camera_same_subnet": "false",
+    "camera_signature_length": "64",
+    "camera_ticket_code": "0",
+    "camera_vendor": "4",
+    "index": 3,
+    "model": "xiaomi.camera.c302",
+    "cached_online": true
+  },
+  {
+    "camera_model": "chuangmi.camera.039a01",
+    "camera_ticket_code": "-6",
+    "index": 4,
+    "model": "chuangmi.camera.039a01",
+    "cached_online": false
+  },
+  {
+    "camera_device_key_length": "64",
+    "camera_init_length": "86",
+    "camera_local_tcp_reachable": "false",
+    "camera_model": "chuangmi.camera.069a01",
+    "camera_p2p_present": "true",
+    "camera_same_subnet": "true",
+    "camera_signature_length": "64",
+    "camera_ticket_code": "0",
+    "camera_vendor": "4",
+    "index": 5,
+    "model": "chuangmi.camera.069a01",
+    "cached_online": false
+  },
+  {
+    "camera_model": "chuangmi.camera.029a02",
+    "camera_ticket_code": "-6",
+    "index": 6,
+    "model": "chuangmi.camera.029a02",
+    "cached_online": false
+  }
+]

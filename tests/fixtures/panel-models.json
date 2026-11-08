@@ -1,0 +1,4566 @@
+[
+  {
+    "model": "chuangmi.camera.069a01",
+    "capabilities": [
+      {
+        "key": "p:2:1",
+        "siid": 2,
+        "piid": 1,
+        "name": "on",
+        "title": "开关",
+        "service": "摄像机控制",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:2:2",
+        "siid": 2,
+        "piid": 2,
+        "name": "image-rollover",
+        "title": "图像翻转",
+        "service": "摄像机控制",
+        "format": "uint16",
+        "unit": "arcdegrees",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          0,
+          180,
+          180
+        ]
+      },
+      {
+        "key": "p:2:3",
+        "siid": 2,
+        "piid": 3,
+        "name": "night-shot",
+        "title": "夜视功能",
+        "service": "摄像机控制",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [
+          {
+            "value": 0,
+            "description": "开"
+          },
+          {
+            "value": 1,
+            "description": "关"
+          },
+          {
+            "value": 2,
+            "description": "自动"
+          }
+        ]
+      },
+      {
+        "key": "p:2:5",
+        "siid": 2,
+        "piid": 5,
+        "name": "wdr-mode",
+        "title": "宽动态范围模式",
+        "service": "摄像机控制",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:2:6",
+        "siid": 2,
+        "piid": 6,
+        "name": "glimmer-full-color",
+        "title": "微光全彩",
+        "service": "摄像机控制",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:2:7",
+        "siid": 2,
+        "piid": 7,
+        "name": "recording-mode",
+        "title": "录制模式",
+        "service": "摄像机控制",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [
+          {
+            "value": 0,
+            "description": "一直录制"
+          },
+          {
+            "value": 1,
+            "description": "停止录制"
+          },
+          {
+            "value": 2,
+            "description": "移动录制"
+          }
+        ]
+      },
+      {
+        "key": "p:2:8",
+        "siid": 2,
+        "piid": 8,
+        "name": "motion-tracking",
+        "title": "移动追踪",
+        "service": "摄像机控制",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:2:9",
+        "siid": 2,
+        "piid": 9,
+        "name": "time-watermark",
+        "title": "时间水印",
+        "service": "摄像机控制",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:3:1",
+        "siid": 3,
+        "piid": 1,
+        "name": "on",
+        "title": "开关",
+        "service": "指示灯",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:4:1",
+        "siid": 4,
+        "piid": 1,
+        "name": "status",
+        "title": "工作状态",
+        "service": "存储卡管理",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [
+          {
+            "value": 0,
+            "description": "正常"
+          },
+          {
+            "value": 1,
+            "description": "不存在"
+          },
+          {
+            "value": 2,
+            "description": "满"
+          },
+          {
+            "value": 3,
+            "description": "损坏"
+          },
+          {
+            "value": 4,
+            "description": "格式化中"
+          },
+          {
+            "value": 5,
+            "description": "卡推出"
+          },
+          {
+            "value": 6,
+            "description": "修复中"
+          },
+          {
+            "value": 7,
+            "description": "推出中"
+          },
+          {
+            "value": 8,
+            "description": "未初始化"
+          },
+          {
+            "value": 9,
+            "description": "控件不足"
+          },
+          {
+            "value": 10,
+            "description": "文件异常"
+          },
+          {
+            "value": 11,
+            "description": "不兼容"
+          }
+        ]
+      },
+      {
+        "key": "p:4:2",
+        "siid": 4,
+        "piid": 2,
+        "name": "storage-total-space",
+        "title": "存储总空间（KByte）",
+        "service": "存储卡管理",
+        "format": "uint32",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          2147483648,
+          1
+        ]
+      },
+      {
+        "key": "p:4:3",
+        "siid": 4,
+        "piid": 3,
+        "name": "storage-free-space",
+        "title": "存储剩余空间（KByte）",
+        "service": "存储卡管理",
+        "format": "uint32",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          2147483648,
+          1
+        ]
+      },
+      {
+        "key": "p:4:4",
+        "siid": 4,
+        "piid": 4,
+        "name": "storage-used-space",
+        "title": "存储已用空间（KByte）",
+        "service": "存储卡管理",
+        "format": "uint32",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          2147483648,
+          1
+        ]
+      },
+      {
+        "key": "p:5:1",
+        "siid": 5,
+        "piid": 1,
+        "name": "motion-detection",
+        "title": "移动侦测",
+        "service": "移动侦测",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:5:2",
+        "siid": 5,
+        "piid": 2,
+        "name": "alarm-interval",
+        "title": "报警时间间隔",
+        "service": "移动侦测",
+        "format": "uint8",
+        "unit": "minutes",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          1,
+          30,
+          1
+        ]
+      },
+      {
+        "key": "p:5:3",
+        "siid": 5,
+        "piid": 3,
+        "name": "detection-sensitivity",
+        "title": "侦测灵敏度",
+        "service": "移动侦测",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [
+          {
+            "value": 0,
+            "description": "低"
+          },
+          {
+            "value": 1,
+            "description": "高"
+          }
+        ]
+      },
+      {
+        "key": "p:5:4",
+        "siid": 5,
+        "piid": 4,
+        "name": "motion-detection-start-time",
+        "title": "移动侦测开始时间",
+        "service": "移动侦测",
+        "format": "string",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:5:5",
+        "siid": 5,
+        "piid": 5,
+        "name": "motion-detection-end-time",
+        "title": "移动侦测结束时间",
+        "service": "移动侦测",
+        "format": "string",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:6:1",
+        "siid": 6,
+        "piid": 1,
+        "name": "volume",
+        "title": "音量",
+        "service": "扬声器",
+        "format": "uint8",
+        "unit": "percentage",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          0,
+          100,
+          1
+        ]
+      },
+      {
+        "key": "p:6:2",
+        "siid": 6,
+        "piid": 2,
+        "name": "mute",
+        "title": "静音",
+        "service": "扬声器",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:17:2",
+        "siid": 17,
+        "piid": 2,
+        "name": "self-check-results",
+        "title": "自检结果",
+        "service": "设备自检",
+        "format": "string",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": []
+      },
+      {
+        "key": "p:17:3",
+        "siid": 17,
+        "piid": 3,
+        "name": "manual-check-results",
+        "title": "手动检测结果",
+        "service": "设备自检",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [
+          {
+            "value": 0,
+            "description": "Normal"
+          },
+          {
+            "value": 1,
+            "description": "Abnormal"
+          }
+        ]
+      },
+      {
+        "key": "p:16:1",
+        "siid": 16,
+        "piid": 1,
+        "name": "ejected",
+        "title": "记录SD卡是否被弹出过",
+        "service": "记录SD卡是否被弹出过",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:16:2",
+        "siid": 16,
+        "piid": 2,
+        "name": "record-duration",
+        "title": "SD卡可记录视频的长度（min）",
+        "service": "记录SD卡是否被弹出过",
+        "format": "uint32",
+        "unit": "minutes",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          2147483648,
+          1
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "key": "a:4:2",
+        "siid": 4,
+        "aiid": 2,
+        "name": "pop-up",
+        "title": "弹出",
+        "service": "存储卡管理",
+        "supported": true,
+        "inputs": []
+      },
+      {
+        "key": "a:9:1",
+        "siid": 9,
+        "aiid": 1,
+        "name": "start-p2p-stream",
+        "title": "开始实时视频流",
+        "service": "P2P视频流",
+        "supported": true,
+        "inputs": []
+      },
+      {
+        "key": "a:9:2",
+        "siid": 9,
+        "aiid": 2,
+        "name": "stop-stream",
+        "title": "停止流",
+        "service": "P2P视频流",
+        "supported": true,
+        "inputs": []
+      },
+      {
+        "key": "a:17:1",
+        "siid": 17,
+        "aiid": 1,
+        "name": "start-check",
+        "title": "开始自检",
+        "service": "设备自检",
+        "supported": true,
+        "inputs": [
+          {
+            "key": "p:17:1",
+            "siid": 17,
+            "piid": 1,
+            "name": "self-check-items",
+            "title": "自检项",
+            "service": "设备自检",
+            "format": "uint8",
+            "unit": "",
+            "readable": false,
+            "writable": false,
+            "choices": [
+              {
+                "value": 0,
+                "description": "SD卡检测"
+              },
+              {
+                "value": 1,
+                "description": "夜视功能检测"
+              },
+              {
+                "value": 2,
+                "description": "夜视模式恢复"
+              },
+              {
+                "value": 3,
+                "description": "电机检测"
+              },
+              {
+                "value": 4,
+                "description": "图像检测"
+              },
+              {
+                "value": 5,
+                "description": "MIC回环检测"
+              },
+              {
+                "value": 6,
+                "description": "电源功率检测"
+              },
+              {
+                "value": 7,
+                "description": "Wi-Fi/APP连接检测"
+              },
+              {
+                "value": 8,
+                "description": "看家助手检测"
+              },
+              {
+                "value": 9,
+                "description": "录音播放"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "a:17:2",
+        "siid": 17,
+        "aiid": 2,
+        "name": "stop-check",
+        "title": "终止自检",
+        "service": "设备自检",
+        "supported": true,
+        "inputs": []
+      },
+      {
+        "key": "a:17:3",
+        "siid": 17,
+        "aiid": 3,
+        "name": "sync-manual-check",
+        "title": "同步手动检测项及结果",
+        "service": "设备自检",
+        "supported": true,
+        "inputs": [
+          {
+            "key": "p:17:1",
+            "siid": 17,
+            "piid": 1,
+            "name": "self-check-items",
+            "title": "自检项",
+            "service": "设备自检",
+            "format": "uint8",
+            "unit": "",
+            "readable": false,
+            "writable": false,
+            "choices": [
+              {
+                "value": 0,
+                "description": "SD卡检测"
+              },
+              {
+                "value": 1,
+                "description": "夜视功能检测"
+              },
+              {
+                "value": 2,
+                "description": "夜视模式恢复"
+              },
+              {
+                "value": 3,
+                "description": "电机检测"
+              },
+              {
+                "value": 4,
+                "description": "图像检测"
+              },
+              {
+                "value": 5,
+                "description": "MIC回环检测"
+              },
+              {
+                "value": 6,
+                "description": "电源功率检测"
+              },
+              {
+                "value": 7,
+                "description": "Wi-Fi/APP连接检测"
+              },
+              {
+                "value": 8,
+                "description": "看家助手检测"
+              },
+              {
+                "value": 9,
+                "description": "录音播放"
+              }
+            ]
+          },
+          {
+            "key": "p:17:3",
+            "siid": 17,
+            "piid": 3,
+            "name": "manual-check-results",
+            "title": "手动检测结果",
+            "service": "设备自检",
+            "format": "uint8",
+            "unit": "",
+            "readable": true,
+            "writable": true,
+            "choices": [
+              {
+                "value": 0,
+                "description": "Normal"
+              },
+              {
+                "value": 1,
+                "description": "Abnormal"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "a:17:4",
+        "siid": 17,
+        "aiid": 4,
+        "name": "stop-check",
+        "title": "终止自检",
+        "service": "设备自检",
+        "supported": true,
+        "inputs": [
+          {
+            "key": "p:17:1",
+            "siid": 17,
+            "piid": 1,
+            "name": "self-check-items",
+            "title": "自检项",
+            "service": "设备自检",
+            "format": "uint8",
+            "unit": "",
+            "readable": false,
+            "writable": false,
+            "choices": [
+              {
+                "value": 0,
+                "description": "SD卡检测"
+              },
+              {
+                "value": 1,
+                "description": "夜视功能检测"
+              },
+              {
+                "value": 2,
+                "description": "夜视模式恢复"
+              },
+              {
+                "value": 3,
+                "description": "电机检测"
+              },
+              {
+                "value": 4,
+                "description": "图像检测"
+              },
+              {
+                "value": 5,
+                "description": "MIC回环检测"
+              },
+              {
+                "value": 6,
+                "description": "电源功率检测"
+              },
+              {
+                "value": 7,
+                "description": "Wi-Fi/APP连接检测"
+              },
+              {
+                "value": 8,
+                "description": "看家助手检测"
+              },
+              {
+                "value": 9,
+                "description": "录音播放"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "a:17:5",
+        "siid": 17,
+        "aiid": 5,
+        "name": "one-key-repair",
+        "title": "一键修复",
+        "service": "设备自检",
+        "supported": true,
+        "inputs": []
+      },
+      {
+        "key": "a:15:1",
+        "siid": 15,
+        "aiid": 1,
+        "name": "upload-video",
+        "title": "录制并上传视频",
+        "service": "ai场景if/then",
+        "supported": true,
+        "inputs": []
+      },
+      {
+        "key": "a:15:2",
+        "siid": 15,
+        "aiid": 2,
+        "name": "open-track-switch",
+        "title": "打开看家->人形侦测->人形追踪",
+        "service": "ai场景if/then",
+        "supported": true,
+        "inputs": []
+      }
+    ]
+  },
+  {
+    "model": "chuangmi.camera.039c01",
+    "capabilities": [
+      {
+        "key": "p:2:1",
+        "siid": 2,
+        "piid": 1,
+        "name": "on",
+        "title": "开关",
+        "service": "摄像机控制",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:2:2",
+        "siid": 2,
+        "piid": 2,
+        "name": "image-rollover",
+        "title": "图像翻转",
+        "service": "摄像机控制",
+        "format": "uint16",
+        "unit": "arcdegrees",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          0,
+          180,
+          180
+        ]
+      },
+      {
+        "key": "p:2:3",
+        "siid": 2,
+        "piid": 3,
+        "name": "night-shot",
+        "title": "夜视功能",
+        "service": "摄像机控制",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [
+          {
+            "value": 0,
+            "description": "关"
+          },
+          {
+            "value": 1,
+            "description": "开"
+          },
+          {
+            "value": 2,
+            "description": "自动"
+          }
+        ]
+      },
+      {
+        "key": "p:2:5",
+        "siid": 2,
+        "piid": 5,
+        "name": "wdr-mode",
+        "title": "宽动态范围模式",
+        "service": "摄像机控制",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:2:6",
+        "siid": 2,
+        "piid": 6,
+        "name": "glimmer-full-color",
+        "title": "微光全彩",
+        "service": "摄像机控制",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:2:7",
+        "siid": 2,
+        "piid": 7,
+        "name": "recording-mode",
+        "title": "录制模式",
+        "service": "摄像机控制",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [
+          {
+            "value": 0,
+            "description": "没有录制"
+          },
+          {
+            "value": 1,
+            "description": "移动录制"
+          },
+          {
+            "value": 2,
+            "description": "一直录制"
+          }
+        ]
+      },
+      {
+        "key": "p:2:8",
+        "siid": 2,
+        "piid": 8,
+        "name": "motion-tracking",
+        "title": "移动追踪",
+        "service": "摄像机控制",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:2:9",
+        "siid": 2,
+        "piid": 9,
+        "name": "time-watermark",
+        "title": "本地存储",
+        "service": "摄像机控制",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:2:10",
+        "siid": 2,
+        "piid": 10,
+        "name": "ptz-camera",
+        "title": "云台控制",
+        "service": "摄像机控制",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": []
+      },
+      {
+        "key": "p:3:1",
+        "siid": 3,
+        "piid": 1,
+        "name": "on",
+        "title": "开关",
+        "service": "指示灯",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:4:1",
+        "siid": 4,
+        "piid": 1,
+        "name": "status",
+        "title": "工作状态",
+        "service": "存储卡管理",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [
+          {
+            "value": 0,
+            "description": "闲置"
+          },
+          {
+            "value": 1,
+            "description": "忙碌"
+          },
+          {
+            "value": 2,
+            "description": "延迟"
+          },
+          {
+            "value": 3,
+            "description": "broken"
+          },
+          {
+            "value": 4,
+            "description": "Formatting"
+          },
+          {
+            "value": 5,
+            "description": "Formatting"
+          },
+          {
+            "value": 6,
+            "description": "Formatting"
+          },
+          {
+            "value": 7,
+            "description": "Ejecting"
+          }
+        ]
+      },
+      {
+        "key": "p:4:2",
+        "siid": 4,
+        "piid": 2,
+        "name": "storage-total-space",
+        "title": "存储总空间（KByte）",
+        "service": "存储卡管理",
+        "format": "uint32",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          2147483648,
+          1
+        ]
+      },
+      {
+        "key": "p:4:3",
+        "siid": 4,
+        "piid": 3,
+        "name": "storage-free-space",
+        "title": "存储剩余空间（KByte）",
+        "service": "存储卡管理",
+        "format": "uint32",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          2147483648,
+          1
+        ]
+      },
+      {
+        "key": "p:4:4",
+        "siid": 4,
+        "piid": 4,
+        "name": "storage-used-space",
+        "title": "存储已用空间（KByte）",
+        "service": "存储卡管理",
+        "format": "uint32",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          2147483648,
+          1
+        ]
+      },
+      {
+        "key": "p:5:1",
+        "siid": 5,
+        "piid": 1,
+        "name": "motion-detection",
+        "title": "移动侦测",
+        "service": "移动侦测",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:5:2",
+        "siid": 5,
+        "piid": 2,
+        "name": "alarm-interval",
+        "title": "报警时间间隔",
+        "service": "移动侦测",
+        "format": "uint8",
+        "unit": "minutes",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          1,
+          30,
+          1
+        ]
+      },
+      {
+        "key": "p:5:3",
+        "siid": 5,
+        "piid": 3,
+        "name": "detection-sensitivity",
+        "title": "侦测灵敏度",
+        "service": "移动侦测",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [
+          {
+            "value": 0,
+            "description": "Low"
+          },
+          {
+            "value": 2,
+            "description": "Middle"
+          }
+        ]
+      },
+      {
+        "key": "p:5:4",
+        "siid": 5,
+        "piid": 4,
+        "name": "motion-detection-start-time",
+        "title": "移动侦测开始时间",
+        "service": "移动侦测",
+        "format": "string",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:5:5",
+        "siid": 5,
+        "piid": 5,
+        "name": "motion-detection-end-time",
+        "title": "移动侦测结束时间",
+        "service": "移动侦测",
+        "format": "string",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:6:1",
+        "siid": 6,
+        "piid": 1,
+        "name": "volume",
+        "title": "静音",
+        "service": "扬声器",
+        "format": "uint8",
+        "unit": "percentage",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          0,
+          100,
+          1
+        ]
+      },
+      {
+        "key": "p:6:2",
+        "siid": 6,
+        "piid": 2,
+        "name": "mute",
+        "title": "音量",
+        "service": "扬声器",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:9:1",
+        "siid": 9,
+        "piid": 1,
+        "name": "talk-mode",
+        "title": "对讲方式",
+        "service": "P2P视频流",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [
+          {
+            "value": 0,
+            "description": "Two-way"
+          },
+          {
+            "value": 1,
+            "description": "One-way"
+          }
+        ]
+      },
+      {
+        "key": "p:9:2",
+        "siid": 9,
+        "piid": 2,
+        "name": "audio-codec",
+        "title": "音频编码",
+        "service": "P2P视频流",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [
+          {
+            "value": 0,
+            "description": "G711A"
+          },
+          {
+            "value": 1,
+            "description": "ACC"
+          },
+          {
+            "value": 2,
+            "description": "OPUS"
+          },
+          {
+            "value": 3,
+            "description": "PCM"
+          }
+        ]
+      },
+      {
+        "key": "p:9:3",
+        "siid": 9,
+        "piid": 3,
+        "name": "audio-bit-width",
+        "title": "录制音频位宽",
+        "service": "P2P视频流",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [
+          {
+            "value": 0,
+            "description": "8"
+          },
+          {
+            "value": 1,
+            "description": "16"
+          }
+        ]
+      },
+      {
+        "key": "p:9:4",
+        "siid": 9,
+        "piid": 4,
+        "name": "video-codec",
+        "title": "视频编码",
+        "service": "P2P视频流",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [
+          {
+            "value": 0,
+            "description": "H264"
+          },
+          {
+            "value": 1,
+            "description": "H265"
+          }
+        ]
+      },
+      {
+        "key": "p:9:5",
+        "siid": 9,
+        "piid": 5,
+        "name": "audio-smp-rate",
+        "title": "录制音频采样率",
+        "service": "P2P视频流",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [
+          {
+            "value": 0,
+            "description": "8"
+          },
+          {
+            "value": 1,
+            "description": "16"
+          },
+          {
+            "value": 2,
+            "description": "32"
+          },
+          {
+            "value": 3,
+            "description": "48"
+          }
+        ]
+      },
+      {
+        "key": "p:9:6",
+        "siid": 9,
+        "piid": 6,
+        "name": "audio-channel",
+        "title": "录制音频单双通道",
+        "service": "P2P视频流",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [
+          {
+            "value": 0,
+            "description": "Single Channel"
+          },
+          {
+            "value": 1,
+            "description": "Dual Channel"
+          }
+        ]
+      },
+      {
+        "key": "p:9:7",
+        "siid": 9,
+        "piid": 7,
+        "name": "talk-codec",
+        "title": "对讲编码格式",
+        "service": "P2P视频流",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [
+          {
+            "value": 0,
+            "description": "G711A"
+          },
+          {
+            "value": 1,
+            "description": "ACC"
+          },
+          {
+            "value": 2,
+            "description": "OPUS"
+          },
+          {
+            "value": 3,
+            "description": "PCM"
+          }
+        ]
+      },
+      {
+        "key": "p:9:8",
+        "siid": 9,
+        "piid": 8,
+        "name": "distortion-crt-osdx",
+        "title": "畸变纠正参数比例-宽",
+        "service": "P2P视频流",
+        "format": "float",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          1,
+          0.0001
+        ]
+      },
+      {
+        "key": "p:9:9",
+        "siid": 9,
+        "piid": 9,
+        "name": "distortion-crt-osdy",
+        "title": "畸变纠正参数比例-高",
+        "service": "P2P视频流",
+        "format": "float",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          1,
+          0.0001
+        ]
+      },
+      {
+        "key": "p:9:10",
+        "siid": 9,
+        "piid": 10,
+        "name": "resolution-types",
+        "title": "视频分辨率",
+        "service": "P2P视频流",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [
+          {
+            "value": 1,
+            "description": "360"
+          },
+          {
+            "value": 5,
+            "description": "480"
+          }
+        ]
+      },
+      {
+        "key": "p:10:1",
+        "siid": 10,
+        "piid": 1,
+        "name": "fav-area",
+        "title": "常看位置配置",
+        "service": "摄像机常看位置配置",
+        "format": "string",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:10:2",
+        "siid": 10,
+        "piid": 2,
+        "name": "active-fav-area",
+        "title": "激活常看位置",
+        "service": "摄像机常看位置配置",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          0,
+          64,
+          1
+        ]
+      },
+      {
+        "key": "p:11:1",
+        "siid": 11,
+        "piid": 1,
+        "name": "cruise-switch",
+        "title": "巡航功能开关",
+        "service": "巡航",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:11:2",
+        "siid": 11,
+        "piid": 2,
+        "name": "cruise-cycle",
+        "title": "巡航周期",
+        "service": "巡航",
+        "format": "uint16",
+        "unit": "minutes",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          0,
+          1440,
+          1
+        ]
+      },
+      {
+        "key": "p:11:3",
+        "siid": 11,
+        "piid": 3,
+        "name": "cruise-start-time",
+        "title": "巡航开始时间",
+        "service": "巡航",
+        "format": "string",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:11:4",
+        "siid": 11,
+        "piid": 4,
+        "name": "cruise-end-time",
+        "title": "巡航结束时间",
+        "service": "巡航",
+        "format": "string",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:11:5",
+        "siid": 11,
+        "piid": 5,
+        "name": "cruise-repetition",
+        "title": "重复项（日期）",
+        "service": "巡航",
+        "format": "string",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:11:6",
+        "siid": 11,
+        "piid": 6,
+        "name": "cruise-mode",
+        "title": "巡航模式",
+        "service": "巡航",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [
+          {
+            "value": 0,
+            "description": "Panoramic Cruise"
+          },
+          {
+            "value": 1,
+            "description": "Fixed Point Cruise"
+          }
+        ]
+      },
+      {
+        "key": "p:11:7",
+        "siid": 11,
+        "piid": 7,
+        "name": "cruise-position",
+        "title": "巡航位置",
+        "service": "巡航",
+        "format": "string",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:12:2",
+        "siid": 12,
+        "piid": 2,
+        "name": "self-check-results",
+        "title": "自检结果",
+        "service": "自检服务",
+        "format": "string",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": []
+      },
+      {
+        "key": "p:12:3",
+        "siid": 12,
+        "piid": 3,
+        "name": "manual-check-results",
+        "title": "手动检测结果",
+        "service": "自检服务",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [
+          {
+            "value": 0,
+            "description": "正常"
+          },
+          {
+            "value": 1,
+            "description": "异常"
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "key": "a:4:2",
+        "siid": 4,
+        "aiid": 2,
+        "name": "pop-up",
+        "title": "弹出",
+        "service": "存储卡管理",
+        "supported": true,
+        "inputs": []
+      },
+      {
+        "key": "a:9:1",
+        "siid": 9,
+        "aiid": 1,
+        "name": "start-p2p-stream",
+        "title": "开始实时视频流",
+        "service": "P2P视频流",
+        "supported": true,
+        "inputs": []
+      },
+      {
+        "key": "a:9:2",
+        "siid": 9,
+        "aiid": 2,
+        "name": "stop-stream",
+        "title": "停止流",
+        "service": "P2P视频流",
+        "supported": true,
+        "inputs": []
+      },
+      {
+        "key": "a:9:3",
+        "siid": 9,
+        "aiid": 3,
+        "name": "upload-video",
+        "title": "录制视频并上传",
+        "service": "P2P视频流",
+        "supported": true,
+        "inputs": []
+      },
+      {
+        "key": "a:12:1",
+        "siid": 12,
+        "aiid": 1,
+        "name": "start-check",
+        "title": "开始自检",
+        "service": "自检服务",
+        "supported": true,
+        "inputs": [
+          {
+            "key": "p:12:1",
+            "siid": 12,
+            "piid": 1,
+            "name": "self-check-items",
+            "title": "自检项",
+            "service": "自检服务",
+            "format": "uint8",
+            "unit": "",
+            "readable": false,
+            "writable": false,
+            "choices": [
+              {
+                "value": 0,
+                "description": "SD卡检测"
+              },
+              {
+                "value": 1,
+                "description": "夜视功能检测"
+              },
+              {
+                "value": 2,
+                "description": "夜视模式恢复"
+              },
+              {
+                "value": 3,
+                "description": "电机检测"
+              },
+              {
+                "value": 4,
+                "description": "图像检测"
+              },
+              {
+                "value": 5,
+                "description": "MIC回环检测"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "a:12:2",
+        "siid": 12,
+        "aiid": 2,
+        "name": "stop-check",
+        "title": "终止自检",
+        "service": "自检服务",
+        "supported": true,
+        "inputs": []
+      },
+      {
+        "key": "a:12:3",
+        "siid": 12,
+        "aiid": 3,
+        "name": "sync-manual-check",
+        "title": "同步手动检测项及结果",
+        "service": "自检服务",
+        "supported": true,
+        "inputs": [
+          {
+            "key": "p:12:1",
+            "siid": 12,
+            "piid": 1,
+            "name": "self-check-items",
+            "title": "自检项",
+            "service": "自检服务",
+            "format": "uint8",
+            "unit": "",
+            "readable": false,
+            "writable": false,
+            "choices": [
+              {
+                "value": 0,
+                "description": "SD卡检测"
+              },
+              {
+                "value": 1,
+                "description": "夜视功能检测"
+              },
+              {
+                "value": 2,
+                "description": "夜视模式恢复"
+              },
+              {
+                "value": 3,
+                "description": "电机检测"
+              },
+              {
+                "value": 4,
+                "description": "图像检测"
+              },
+              {
+                "value": 5,
+                "description": "MIC回环检测"
+              }
+            ]
+          },
+          {
+            "key": "p:12:3",
+            "siid": 12,
+            "piid": 3,
+            "name": "manual-check-results",
+            "title": "手动检测结果",
+            "service": "自检服务",
+            "format": "uint8",
+            "unit": "",
+            "readable": true,
+            "writable": true,
+            "choices": [
+              {
+                "value": 0,
+                "description": "正常"
+              },
+              {
+                "value": 1,
+                "description": "异常"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "a:12:4",
+        "siid": 12,
+        "aiid": 4,
+        "name": "stop-check",
+        "title": "终止自检",
+        "service": "自检服务",
+        "supported": true,
+        "inputs": [
+          {
+            "key": "p:12:1",
+            "siid": 12,
+            "piid": 1,
+            "name": "self-check-items",
+            "title": "自检项",
+            "service": "自检服务",
+            "format": "uint8",
+            "unit": "",
+            "readable": false,
+            "writable": false,
+            "choices": [
+              {
+                "value": 0,
+                "description": "SD卡检测"
+              },
+              {
+                "value": 1,
+                "description": "夜视功能检测"
+              },
+              {
+                "value": 2,
+                "description": "夜视模式恢复"
+              },
+              {
+                "value": 3,
+                "description": "电机检测"
+              },
+              {
+                "value": 4,
+                "description": "图像检测"
+              },
+              {
+                "value": 5,
+                "description": "MIC回环检测"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "model": "chuangmi.plug.212a01",
+    "capabilities": [
+      {
+        "key": "p:2:1",
+        "siid": 2,
+        "piid": 1,
+        "name": "on",
+        "title": "开关",
+        "service": "开关",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:2:6",
+        "siid": 2,
+        "piid": 6,
+        "name": "temperature",
+        "title": "温度",
+        "service": "开关",
+        "format": "uint8",
+        "unit": "celsius",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          255,
+          1
+        ]
+      },
+      {
+        "key": "p:2:7",
+        "siid": 2,
+        "piid": 7,
+        "name": "working-time",
+        "title": "已工作时间",
+        "service": "开关",
+        "format": "uint32",
+        "unit": "minutes",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          300,
+          1
+        ]
+      },
+      {
+        "key": "p:3:1",
+        "siid": 3,
+        "piid": 1,
+        "name": "on",
+        "title": "开关",
+        "service": "指示灯",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:5:1",
+        "siid": 5,
+        "piid": 1,
+        "name": "power-consumption",
+        "title": "耗电量",
+        "service": "功耗参数",
+        "format": "uint32",
+        "unit": "none",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          65535000,
+          1
+        ]
+      },
+      {
+        "key": "p:5:2",
+        "siid": 5,
+        "piid": 2,
+        "name": "electric-current",
+        "title": "电流",
+        "service": "功耗参数",
+        "format": "uint16",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          65535,
+          1
+        ]
+      },
+      {
+        "key": "p:5:3",
+        "siid": 5,
+        "piid": 3,
+        "name": "voltage",
+        "title": "电压",
+        "service": "功耗参数",
+        "format": "uint16",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          65535,
+          1
+        ]
+      },
+      {
+        "key": "p:5:6",
+        "siid": 5,
+        "piid": 6,
+        "name": "electric-power",
+        "title": "电功率(单位0.01w)",
+        "service": "功耗参数",
+        "format": "uint32",
+        "unit": "watt",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          6553500,
+          1
+        ]
+      },
+      {
+        "key": "p:5:7",
+        "siid": 5,
+        "piid": 7,
+        "name": "surge-power",
+        "title": "过功率",
+        "service": "功耗参数",
+        "format": "uint32",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          65525,
+          1
+        ]
+      },
+      {
+        "key": "p:4:1",
+        "siid": 4,
+        "piid": 1,
+        "name": "on-duration",
+        "title": "开启时长",
+        "service": "循环任务、按键倒计时",
+        "format": "uint32",
+        "unit": "seconds",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          0,
+          86500,
+          1
+        ]
+      },
+      {
+        "key": "p:4:2",
+        "siid": 4,
+        "piid": 2,
+        "name": "off-duration",
+        "title": "关闭时长",
+        "service": "循环任务、按键倒计时",
+        "format": "uint32",
+        "unit": "seconds",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          0,
+          86500,
+          1
+        ]
+      },
+      {
+        "key": "p:4:3",
+        "siid": 4,
+        "piid": 3,
+        "name": "countdown",
+        "title": "按键倒计时",
+        "service": "循环任务、按键倒计时",
+        "format": "uint32",
+        "unit": "seconds",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          0,
+          86500,
+          1
+        ]
+      },
+      {
+        "key": "p:4:4",
+        "siid": 4,
+        "piid": 4,
+        "name": "task-switch",
+        "title": "循环任务的开关",
+        "service": "循环任务、按键倒计时",
+        "format": "bool",
+        "unit": "none",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:4:5",
+        "siid": 4,
+        "piid": 5,
+        "name": "countdown-info",
+        "title": "获取设备端是否启动了按键倒计时",
+        "service": "循环任务、按键倒计时",
+        "format": "bool",
+        "unit": "none",
+        "readable": true,
+        "writable": false,
+        "choices": []
+      },
+      {
+        "key": "p:4:6",
+        "siid": 4,
+        "piid": 6,
+        "name": "switch-toggle",
+        "title": "开关状态自动翻转",
+        "service": "循环任务、按键倒计时",
+        "format": "bool",
+        "unit": "none",
+        "readable": false,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:7:1",
+        "siid": 7,
+        "piid": 1,
+        "name": "power-enable",
+        "title": "功率保护开关",
+        "service": "用来打开或者关闭某些功能",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:7:2",
+        "siid": 7,
+        "piid": 2,
+        "name": "over-power",
+        "title": "过功率断电保护的值",
+        "service": "用来打开或者关闭某些功能",
+        "format": "uint32",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          0,
+          65525,
+          1
+        ]
+      }
+    ],
+    "actions": []
+  },
+  {
+    "model": "lumi.acpartner.mcn04",
+    "capabilities": [
+      {
+        "key": "p:3:1",
+        "siid": 3,
+        "piid": 1,
+        "name": "on",
+        "title": "开关",
+        "service": "空调",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:3:2",
+        "siid": 3,
+        "piid": 2,
+        "name": "mode",
+        "title": "模式",
+        "service": "空调",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [
+          {
+            "value": 0,
+            "description": "制冷"
+          },
+          {
+            "value": 1,
+            "description": "制热"
+          },
+          {
+            "value": 2,
+            "description": "自动"
+          },
+          {
+            "value": 3,
+            "description": "送风"
+          },
+          {
+            "value": 4,
+            "description": "除湿"
+          }
+        ]
+      },
+      {
+        "key": "p:3:3",
+        "siid": 3,
+        "piid": 3,
+        "name": "fault",
+        "title": "故障",
+        "service": "空调",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [
+          {
+            "value": 0,
+            "description": "No Faults"
+          }
+        ]
+      },
+      {
+        "key": "p:3:4",
+        "siid": 3,
+        "piid": 4,
+        "name": "target-temperature",
+        "title": "设定温度",
+        "service": "空调",
+        "format": "float",
+        "unit": "celsius",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          16,
+          30,
+          1
+        ]
+      },
+      {
+        "key": "p:4:2",
+        "siid": 4,
+        "piid": 2,
+        "name": "fan-level",
+        "title": "风机档位",
+        "service": "风机控制",
+        "format": "uint8",
+        "unit": "none",
+        "readable": true,
+        "writable": true,
+        "choices": [
+          {
+            "value": 0,
+            "description": "自动"
+          },
+          {
+            "value": 1,
+            "description": "低风"
+          },
+          {
+            "value": 2,
+            "description": "中风"
+          },
+          {
+            "value": 3,
+            "description": "高风"
+          }
+        ]
+      },
+      {
+        "key": "p:4:4",
+        "siid": 4,
+        "piid": 4,
+        "name": "vertical-swing",
+        "title": "上下摆风",
+        "service": "风机控制",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:7:1",
+        "siid": 7,
+        "piid": 1,
+        "name": "power-consumption",
+        "title": "耗电量16A",
+        "service": "功耗参数",
+        "format": "float",
+        "unit": "none",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          3.4e+38,
+          0.001
+        ]
+      },
+      {
+        "key": "p:7:2",
+        "siid": 7,
+        "piid": 2,
+        "name": "electric-power",
+        "title": "电功率16A",
+        "service": "功耗参数",
+        "format": "float",
+        "unit": "watt",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          3.4e+38,
+          1
+        ]
+      },
+      {
+        "key": "p:7:3",
+        "siid": 7,
+        "piid": 3,
+        "name": "power-consumption",
+        "title": "耗电量10A",
+        "service": "功耗参数",
+        "format": "float",
+        "unit": "none",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          3.4e+38,
+          0.001
+        ]
+      },
+      {
+        "key": "p:7:4",
+        "siid": 7,
+        "piid": 4,
+        "name": "electric-power",
+        "title": "电功率10A",
+        "service": "功耗参数",
+        "format": "float",
+        "unit": "watt",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          3.4e+38,
+          1
+        ]
+      },
+      {
+        "key": "p:8:1",
+        "siid": 8,
+        "piid": 1,
+        "name": "set-ele-info",
+        "title": "设置电器信息",
+        "service": "自定义空调功能",
+        "format": "string",
+        "unit": "none",
+        "readable": false,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:8:2",
+        "siid": 8,
+        "piid": 2,
+        "name": "brand-id",
+        "title": "空调品牌ID",
+        "service": "自定义空调功能",
+        "format": "uint32",
+        "unit": "none",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          4294967295,
+          1
+        ]
+      },
+      {
+        "key": "p:8:3",
+        "siid": 8,
+        "piid": 3,
+        "name": "remote-id",
+        "title": "空调遥控器ID",
+        "service": "自定义空调功能",
+        "format": "uint32",
+        "unit": "none",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          4294967295,
+          1
+        ]
+      },
+      {
+        "key": "p:8:4",
+        "siid": 8,
+        "piid": 4,
+        "name": "ac-mode",
+        "title": "空调运行模式",
+        "service": "自定义空调功能",
+        "format": "uint8",
+        "unit": "none",
+        "readable": true,
+        "writable": true,
+        "choices": [
+          {
+            "value": 1,
+            "description": "AC-Plug"
+          },
+          {
+            "value": 2,
+            "description": "AC-Unplug"
+          },
+          {
+            "value": 5,
+            "description": "AC-Plug-10"
+          }
+        ]
+      },
+      {
+        "key": "p:8:5",
+        "siid": 8,
+        "piid": 5,
+        "name": "ac-type",
+        "title": "空调类型",
+        "service": "自定义空调功能",
+        "format": "uint8",
+        "unit": "none",
+        "readable": true,
+        "writable": false,
+        "choices": [
+          {
+            "value": 1,
+            "description": "No-status"
+          },
+          {
+            "value": 2,
+            "description": "Have-status"
+          }
+        ]
+      },
+      {
+        "key": "p:8:6",
+        "siid": 8,
+        "piid": 6,
+        "name": "ac-ctrl-range",
+        "title": "空调控制范围",
+        "service": "自定义空调功能",
+        "format": "string",
+        "unit": "none",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:8:7",
+        "siid": 8,
+        "piid": 7,
+        "name": "ac-state",
+        "title": "空调状态",
+        "service": "自定义空调功能",
+        "format": "string",
+        "unit": "none",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:8:8",
+        "siid": 8,
+        "piid": 8,
+        "name": "quick-cool-enable",
+        "title": "速冷使能",
+        "service": "自定义空调功能",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:8:9",
+        "siid": 8,
+        "piid": 9,
+        "name": "quick-cool-time",
+        "title": "速冷时间",
+        "service": "自定义空调功能",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          1,
+          59,
+          1
+        ]
+      },
+      {
+        "key": "p:8:10",
+        "siid": 8,
+        "piid": 10,
+        "name": "quick-cool-status",
+        "title": "速冷状态",
+        "service": "自定义空调功能",
+        "format": "uint8",
+        "unit": "none",
+        "readable": true,
+        "writable": false,
+        "choices": [
+          {
+            "value": 0,
+            "description": "Normal"
+          },
+          {
+            "value": 1,
+            "description": "Quick-cool"
+          }
+        ]
+      },
+      {
+        "key": "p:8:11",
+        "siid": 8,
+        "piid": 11,
+        "name": "sleep-cfg",
+        "title": "安睡配置",
+        "service": "自定义空调功能",
+        "format": "string",
+        "unit": "none",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:8:12",
+        "siid": 8,
+        "piid": 12,
+        "name": "sleep-status",
+        "title": "安睡状态",
+        "service": "自定义空调功能",
+        "format": "uint8",
+        "unit": "none",
+        "readable": true,
+        "writable": false,
+        "choices": [
+          {
+            "value": 0,
+            "description": "Normal"
+          },
+          {
+            "value": 1,
+            "description": "Sleep"
+          }
+        ]
+      },
+      {
+        "key": "p:9:1",
+        "siid": 9,
+        "piid": 1,
+        "name": "indicator-light",
+        "title": "夜间关闭指示灯功能(打开/关闭)",
+        "service": "夜间关闭指示灯功能",
+        "format": "uint8",
+        "unit": "none",
+        "readable": true,
+        "writable": true,
+        "choices": [
+          {
+            "value": 0,
+            "description": "Disable"
+          },
+          {
+            "value": 1,
+            "description": "Enable"
+          }
+        ]
+      },
+      {
+        "key": "p:9:2",
+        "siid": 9,
+        "piid": 2,
+        "name": "effective-time",
+        "title": "生效时间段(结束分<31,24>结束时<23,16>开始分<15,8>开始时<7,0>)",
+        "service": "夜间关闭指示灯功能",
+        "format": "uint32",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          1,
+          991378198,
+          1
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "key": "a:3:1",
+        "siid": 3,
+        "aiid": 1,
+        "name": "toggle",
+        "title": "开关状态切换",
+        "service": "空调",
+        "supported": true,
+        "inputs": []
+      }
+    ]
+  },
+  {
+    "model": "lumi.acpartner.mcn02",
+    "capabilities": [
+      {
+        "key": "p:2:1",
+        "siid": 2,
+        "piid": 1,
+        "name": "on",
+        "title": "开关",
+        "service": "空调",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:2:2",
+        "siid": 2,
+        "piid": 2,
+        "name": "mode",
+        "title": "模式",
+        "service": "空调",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [
+          {
+            "value": 0,
+            "description": "自动"
+          },
+          {
+            "value": 1,
+            "description": "制冷"
+          },
+          {
+            "value": 2,
+            "description": "除湿"
+          },
+          {
+            "value": 3,
+            "description": "制热"
+          },
+          {
+            "value": 4,
+            "description": "送风"
+          }
+        ]
+      },
+      {
+        "key": "p:2:3",
+        "siid": 2,
+        "piid": 3,
+        "name": "target-temperature",
+        "title": "设定温度",
+        "service": "空调",
+        "format": "float",
+        "unit": "celsius",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          16,
+          30,
+          1
+        ]
+      },
+      {
+        "key": "p:3:1",
+        "siid": 3,
+        "piid": 1,
+        "name": "fan-level",
+        "title": "风机档位",
+        "service": "风机控制",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [
+          {
+            "value": 0,
+            "description": "自动"
+          },
+          {
+            "value": 1,
+            "description": "低"
+          },
+          {
+            "value": 2,
+            "description": "中"
+          },
+          {
+            "value": 3,
+            "description": "高"
+          }
+        ]
+      },
+      {
+        "key": "p:3:2",
+        "siid": 3,
+        "piid": 2,
+        "name": "vertical-swing",
+        "title": "上下摆风",
+        "service": "风机控制",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:4:1",
+        "siid": 4,
+        "piid": 1,
+        "name": "match-state",
+        "title": "匹配状态",
+        "service": "空调插座匹配服务",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [
+          {
+            "value": 0,
+            "description": "未匹配中"
+          },
+          {
+            "value": 1,
+            "description": "匹配中"
+          }
+        ]
+      },
+      {
+        "key": "p:4:2",
+        "siid": 4,
+        "piid": 2,
+        "name": "ac-work-mode",
+        "title": "空调工作模式",
+        "service": "空调插座匹配服务",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [
+          {
+            "value": 0,
+            "description": "空调插在插座上"
+          },
+          {
+            "value": 1,
+            "description": "空调没插在插座上"
+          }
+        ]
+      },
+      {
+        "key": "p:4:3",
+        "siid": 4,
+        "piid": 3,
+        "name": "ac-state",
+        "title": "空调状态",
+        "service": "空调插座匹配服务",
+        "format": "string",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:5:1",
+        "siid": 5,
+        "piid": 1,
+        "name": "electric-power",
+        "title": "电功率",
+        "service": "功耗参数",
+        "format": "float",
+        "unit": "watt",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          10000,
+          0.01
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "key": "a:4:1",
+        "siid": 4,
+        "aiid": 1,
+        "name": "set-ac-model",
+        "title": "配置空调的品牌信息",
+        "service": "空调插座匹配服务",
+        "supported": true,
+        "inputs": [
+          {
+            "key": "p:4:4",
+            "siid": 4,
+            "piid": 4,
+            "name": "brand-id",
+            "title": "品牌信息",
+            "service": "空调插座匹配服务",
+            "format": "uint32",
+            "unit": "",
+            "readable": false,
+            "writable": false,
+            "choices": [],
+            "range": [
+              1,
+              4294967295,
+              1
+            ]
+          },
+          {
+            "key": "p:4:5",
+            "siid": 4,
+            "piid": 5,
+            "name": "remote-id",
+            "title": "遥控器id",
+            "service": "空调插座匹配服务",
+            "format": "uint32",
+            "unit": "",
+            "readable": false,
+            "writable": false,
+            "choices": [],
+            "range": [
+              1,
+              4294967295,
+              1
+            ]
+          },
+          {
+            "key": "p:4:6",
+            "siid": 4,
+            "piid": 6,
+            "name": "ac-type",
+            "title": "空调类型",
+            "service": "空调插座匹配服务",
+            "format": "uint32",
+            "unit": "",
+            "readable": false,
+            "writable": false,
+            "choices": [
+              {
+                "value": 0,
+                "description": "无状态空调"
+              },
+              {
+                "value": 1,
+                "description": "有状态空调"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "a:4:2",
+        "siid": 4,
+        "aiid": 2,
+        "name": "set-ac-ctrl-info",
+        "title": "配置码库控制信息",
+        "service": "空调插座匹配服务",
+        "supported": true,
+        "inputs": [
+          {
+            "key": "p:4:5",
+            "siid": 4,
+            "piid": 5,
+            "name": "remote-id",
+            "title": "遥控器id",
+            "service": "空调插座匹配服务",
+            "format": "uint32",
+            "unit": "",
+            "readable": false,
+            "writable": false,
+            "choices": [],
+            "range": [
+              1,
+              4294967295,
+              1
+            ]
+          },
+          {
+            "key": "p:4:8",
+            "siid": 4,
+            "piid": 8,
+            "name": "ac-ctrl-library-crc32",
+            "title": "码库的CrC校验",
+            "service": "空调插座匹配服务",
+            "format": "uint32",
+            "unit": "",
+            "readable": false,
+            "writable": false,
+            "choices": [],
+            "range": [
+              1,
+              4294967295,
+              1
+            ]
+          },
+          {
+            "key": "p:4:7",
+            "siid": 4,
+            "piid": 7,
+            "name": "ac-ctrl-library",
+            "title": "码库控制信息",
+            "service": "空调插座匹配服务",
+            "format": "string",
+            "unit": "",
+            "readable": false,
+            "writable": false,
+            "choices": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "model": "cuco.plug.v3",
+    "capabilities": [
+      {
+        "key": "p:2:1",
+        "siid": 2,
+        "piid": 1,
+        "name": "on",
+        "title": "开关",
+        "service": "开关",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:2:2",
+        "siid": 2,
+        "piid": 2,
+        "name": "default-power-on-state",
+        "title": "默认上电状态，0:恢复断电前状态；1:上电打开；2:上电关闭",
+        "service": "开关",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          0,
+          2,
+          1
+        ]
+      },
+      {
+        "key": "p:2:3",
+        "siid": 2,
+        "piid": 3,
+        "name": "fault",
+        "title": "故障",
+        "service": "开关",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [
+          {
+            "value": 0,
+            "description": "无故障"
+          },
+          {
+            "value": 1,
+            "description": "过温"
+          },
+          {
+            "value": 2,
+            "description": "过载"
+          }
+        ]
+      },
+      {
+        "key": "p:7:1",
+        "siid": 7,
+        "piid": 1,
+        "name": "physical-controls-locked",
+        "title": "物理控制锁",
+        "service": "物理控制锁",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:11:1",
+        "siid": 11,
+        "piid": 1,
+        "name": "power-consumption",
+        "title": "耗电量（单位:0,01Kwh）",
+        "service": "功耗参数",
+        "format": "uint16",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          65535,
+          1
+        ]
+      },
+      {
+        "key": "p:11:2",
+        "siid": 11,
+        "piid": 2,
+        "name": "electric-power",
+        "title": "电功率（单位：1W）",
+        "service": "功耗参数",
+        "format": "float",
+        "unit": "watt",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          10000,
+          1
+        ]
+      },
+      {
+        "key": "p:13:1",
+        "siid": 13,
+        "piid": 1,
+        "name": "on",
+        "title": "开关",
+        "service": "指示灯",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:3:2",
+        "siid": 3,
+        "piid": 2,
+        "name": "mode",
+        "title": "勿扰模式",
+        "service": "指示灯勿扰模式",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:3:3",
+        "siid": 3,
+        "piid": 3,
+        "name": "start-time",
+        "title": "开启时间",
+        "service": "指示灯勿扰模式",
+        "format": "uint16",
+        "unit": "minutes",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          0,
+          1440,
+          1
+        ]
+      },
+      {
+        "key": "p:3:4",
+        "siid": 3,
+        "piid": 4,
+        "name": "end-time",
+        "title": "结束时间",
+        "service": "指示灯勿扰模式",
+        "format": "uint16",
+        "unit": "minutes",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          0,
+          1440,
+          1
+        ]
+      },
+      {
+        "key": "p:4:1",
+        "siid": 4,
+        "piid": 1,
+        "name": "on",
+        "title": "开关",
+        "service": "充电保护",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:4:2",
+        "siid": 4,
+        "piid": 2,
+        "name": "power",
+        "title": "功率阈值",
+        "service": "充电保护",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          2,
+          10,
+          1
+        ]
+      },
+      {
+        "key": "p:4:3",
+        "siid": 4,
+        "piid": 3,
+        "name": "protect-time",
+        "title": "保护时长",
+        "service": "充电保护",
+        "format": "uint8",
+        "unit": "minutes",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          1,
+          10,
+          1
+        ]
+      },
+      {
+        "key": "p:5:1",
+        "siid": 5,
+        "piid": 1,
+        "name": "status",
+        "title": "状态，true：启用中；false：未启用",
+        "service": "循环任务",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:5:2",
+        "siid": 5,
+        "piid": 2,
+        "name": "data-value",
+        "title": "开启时长;关闭时长;日期;开始时间;结束时间 ",
+        "service": "循环任务",
+        "format": "string",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:8:1",
+        "siid": 8,
+        "piid": 1,
+        "name": "on",
+        "title": "倒计时关闭 开关",
+        "service": "快捷倒计时关闭",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:8:2",
+        "siid": 8,
+        "piid": 2,
+        "name": "duration",
+        "title": "时长",
+        "service": "快捷倒计时关闭",
+        "format": "uint16",
+        "unit": "minutes",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          0,
+          1440,
+          1
+        ]
+      },
+      {
+        "key": "p:8:3",
+        "siid": 8,
+        "piid": 3,
+        "name": "left-time",
+        "title": "设备开启后,剩余的时间,0为未开启状态,非0为开启状态",
+        "service": "快捷倒计时关闭",
+        "format": "uint16",
+        "unit": "minutes",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          0,
+          1440,
+          1
+        ]
+      },
+      {
+        "key": "p:9:1",
+        "siid": 9,
+        "piid": 1,
+        "name": "on",
+        "title": "开关",
+        "service": "最大功率限制",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:9:2",
+        "siid": 9,
+        "piid": 2,
+        "name": "power",
+        "title": "保护阈值",
+        "service": "最大功率限制",
+        "format": "uint16",
+        "unit": "watt",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          1500,
+          2500,
+          100
+        ]
+      },
+      {
+        "key": "p:10:1",
+        "siid": 10,
+        "piid": 1,
+        "name": "on",
+        "title": "开关",
+        "service": "过度用电提醒",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:10:2",
+        "siid": 10,
+        "piid": 2,
+        "name": "over-ele-day",
+        "title": "过度用电提醒-日 默认3",
+        "service": "过度用电提醒",
+        "format": "uint16",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          1,
+          60,
+          1
+        ]
+      },
+      {
+        "key": "p:10:3",
+        "siid": 10,
+        "piid": 3,
+        "name": "over-ele-month",
+        "title": "过度用电提醒-月 默认80",
+        "service": "过度用电提醒",
+        "format": "uint16",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          20,
+          1800,
+          20
+        ]
+      },
+      {
+        "key": "p:12:1",
+        "siid": 12,
+        "piid": 1,
+        "name": "on-off-count",
+        "title": "开关次数",
+        "service": "开关次数",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          255,
+          1
+        ]
+      },
+      {
+        "key": "p:12:2",
+        "siid": 12,
+        "piid": 2,
+        "name": "temperature",
+        "title": "设备温度",
+        "service": "开关次数",
+        "format": "uint8",
+        "unit": "celsius",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          150,
+          1
+        ]
+      },
+      {
+        "key": "p:14:1",
+        "siid": 14,
+        "piid": 1,
+        "name": "power",
+        "title": "功率阈值",
+        "service": "充电保护参数扩展",
+        "format": "uint16",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          2,
+          600,
+          1
+        ]
+      },
+      {
+        "key": "p:14:2",
+        "siid": 14,
+        "piid": 2,
+        "name": "protect-time",
+        "title": "保护时长",
+        "service": "充电保护参数扩展",
+        "format": "uint16",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          1,
+          300,
+          1
+        ]
+      },
+      {
+        "key": "p:15:1",
+        "siid": 15,
+        "piid": 1,
+        "name": "power-ext",
+        "title": "保护阈值",
+        "service": "功率限制参数扩展",
+        "format": "uint16",
+        "unit": "watt",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          300,
+          2500,
+          100
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "key": "a:2:1",
+        "siid": 2,
+        "aiid": 1,
+        "name": "toggle",
+        "title": "开关状态切换",
+        "service": "开关",
+        "supported": true,
+        "inputs": []
+      }
+    ]
+  },
+  {
+    "model": "xiaomi.camera.c302",
+    "capabilities": [
+      {
+        "key": "p:2:1",
+        "siid": 2,
+        "piid": 1,
+        "name": "on",
+        "title": "开关",
+        "service": "摄像机控制",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:2:2",
+        "siid": 2,
+        "piid": 2,
+        "name": "ptz-camera",
+        "title": "云台控制",
+        "service": "摄像机控制",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": []
+      },
+      {
+        "key": "p:2:3",
+        "siid": 2,
+        "piid": 3,
+        "name": "night-shot",
+        "title": "夜视功能",
+        "service": "摄像机控制",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [
+          {
+            "value": 0,
+            "description": "一直关闭"
+          },
+          {
+            "value": 1,
+            "description": "一直打开黑白夜视"
+          },
+          {
+            "value": 2,
+            "description": "自动切换黑白夜视"
+          }
+        ]
+      },
+      {
+        "key": "p:2:4",
+        "siid": 2,
+        "piid": 4,
+        "name": "image-rollover",
+        "title": "图像翻转",
+        "service": "摄像机控制",
+        "format": "uint16",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          0,
+          270,
+          90
+        ]
+      },
+      {
+        "key": "p:2:5",
+        "siid": 2,
+        "piid": 5,
+        "name": "time-watermark",
+        "title": "时间水印",
+        "service": "摄像机控制",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:2:6",
+        "siid": 2,
+        "piid": 6,
+        "name": "wdr-mode",
+        "title": "宽动态范围模式",
+        "service": "摄像机控制",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:2:7",
+        "siid": 2,
+        "piid": 7,
+        "name": "glimmer-full-color",
+        "title": "微光全彩",
+        "service": "摄像机控制",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:2:11",
+        "siid": 2,
+        "piid": 11,
+        "name": "recording-mode",
+        "title": "录制模式",
+        "service": "摄像机控制",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [
+          {
+            "value": 0,
+            "description": "不录制"
+          },
+          {
+            "value": 1,
+            "description": "录制移动画面"
+          },
+          {
+            "value": 2,
+            "description": "始终录制"
+          }
+        ]
+      },
+      {
+        "key": "p:2:12",
+        "siid": 2,
+        "piid": 12,
+        "name": "power-frequency",
+        "title": "设备工频",
+        "service": "摄像机控制",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [
+          {
+            "value": 0,
+            "description": "自动"
+          },
+          {
+            "value": 1,
+            "description": "50"
+          },
+          {
+            "value": 2,
+            "description": "60"
+          }
+        ]
+      },
+      {
+        "key": "p:2:19",
+        "siid": 2,
+        "piid": 19,
+        "name": "human-tracking",
+        "title": "人形追踪",
+        "service": "摄像机控制",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:3:1",
+        "siid": 3,
+        "piid": 1,
+        "name": "status",
+        "title": "存储卡状态",
+        "service": "存储卡管理",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          100,
+          1
+        ]
+      },
+      {
+        "key": "p:3:2",
+        "siid": 3,
+        "piid": 2,
+        "name": "storage-total-space",
+        "title": "存储卡总空间",
+        "service": "存储卡管理",
+        "format": "uint32",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          2147483648,
+          1
+        ]
+      },
+      {
+        "key": "p:3:3",
+        "siid": 3,
+        "piid": 3,
+        "name": "storage-free-space",
+        "title": "存储卡剩余空间",
+        "service": "存储卡管理",
+        "format": "uint32",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          2147483648,
+          1
+        ]
+      },
+      {
+        "key": "p:3:4",
+        "siid": 3,
+        "piid": 4,
+        "name": "storage-used-space",
+        "title": "存储卡已用空间",
+        "service": "存储卡管理",
+        "format": "uint32",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          2147483648,
+          1
+        ]
+      },
+      {
+        "key": "p:3:5",
+        "siid": 3,
+        "piid": 5,
+        "name": "dialog-ejected",
+        "title": "弹窗是否弹出过",
+        "service": "存储卡管理",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:3:6",
+        "siid": 3,
+        "piid": 6,
+        "name": "remaining-recording-duration",
+        "title": "剩余录制视频时长",
+        "service": "存储卡管理",
+        "format": "uint32",
+        "unit": "minutes",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          2147483648,
+          1
+        ]
+      },
+      {
+        "key": "p:5:1",
+        "siid": 5,
+        "piid": 1,
+        "name": "motion-detection",
+        "title": "看家助手",
+        "service": "移动侦测",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:5:3",
+        "siid": 5,
+        "piid": 3,
+        "name": "detection-sensitivity",
+        "title": "移动侦测灵敏度",
+        "service": "移动侦测",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [
+          {
+            "value": 0,
+            "description": "低"
+          },
+          {
+            "value": 1,
+            "description": "中"
+          },
+          {
+            "value": 2,
+            "description": "高"
+          }
+        ]
+      },
+      {
+        "key": "p:5:4",
+        "siid": 5,
+        "piid": 4,
+        "name": "motion-detection-start-time",
+        "title": "移动侦测报警开始时间",
+        "service": "移动侦测",
+        "format": "string",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:5:5",
+        "siid": 5,
+        "piid": 5,
+        "name": "motion-detection-end-time",
+        "title": "移动侦测报警结束时间",
+        "service": "移动侦测",
+        "format": "string",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:5:2",
+        "siid": 5,
+        "piid": 2,
+        "name": "alarm-interval",
+        "title": "报警时间间隔",
+        "service": "移动侦测",
+        "format": "uint8",
+        "unit": "minutes",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          1,
+          30,
+          1
+        ]
+      },
+      {
+        "key": "p:4:1",
+        "siid": 4,
+        "piid": 1,
+        "name": "on",
+        "title": "指示灯开关",
+        "service": "指示灯",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:6:1",
+        "siid": 6,
+        "piid": 1,
+        "name": "volume",
+        "title": "音量",
+        "service": "扬声器",
+        "format": "uint8",
+        "unit": "percentage",
+        "readable": true,
+        "writable": true,
+        "choices": [],
+        "range": [
+          0,
+          100,
+          1
+        ]
+      },
+      {
+        "key": "p:6:2",
+        "siid": 6,
+        "piid": 2,
+        "name": "mute",
+        "title": "静音",
+        "service": "扬声器",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:8:3",
+        "siid": 8,
+        "piid": 3,
+        "name": "pet-detection-switch",
+        "title": "宠物检测开关",
+        "service": "AI检测",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:8:6",
+        "siid": 8,
+        "piid": 6,
+        "name": "human-detection",
+        "title": "人形检测开关",
+        "service": "AI检测",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:8:7",
+        "siid": 8,
+        "piid": 7,
+        "name": "move-detection",
+        "title": "画面变动检测开关",
+        "service": "AI检测",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:8:21",
+        "siid": 8,
+        "piid": 21,
+        "name": "people-number",
+        "title": "人数",
+        "service": "AI检测",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          10,
+          1
+        ]
+      },
+      {
+        "key": "p:8:22",
+        "siid": 8,
+        "piid": 22,
+        "name": "pet-tracking",
+        "title": "宠物追踪功能开关",
+        "service": "AI检测",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:8:23",
+        "siid": 8,
+        "piid": 23,
+        "name": "human-close-up",
+        "title": "人形特写功能开关",
+        "service": "AI检测",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:8:28",
+        "siid": 8,
+        "piid": 28,
+        "name": "detection-sensitivity",
+        "title": "画面变动灵敏度",
+        "service": "AI检测",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [
+          {
+            "value": 0,
+            "description": "低"
+          },
+          {
+            "value": 1,
+            "description": "中"
+          },
+          {
+            "value": 2,
+            "description": "高"
+          }
+        ]
+      },
+      {
+        "key": "p:8:30",
+        "siid": 8,
+        "piid": 30,
+        "name": "abnormal-sound-detection",
+        "title": "异常声响算法检测开关",
+        "service": "AI检测",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:8:31",
+        "siid": 8,
+        "piid": 31,
+        "name": "detection-sensitivity",
+        "title": "异常声响检测灵敏度",
+        "service": "AI检测",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [
+          {
+            "value": 0,
+            "description": "Low"
+          },
+          {
+            "value": 1,
+            "description": "Middle"
+          },
+          {
+            "value": 2,
+            "description": "High"
+          }
+        ]
+      },
+      {
+        "key": "p:9:1",
+        "siid": 9,
+        "piid": 1,
+        "name": "video-codec",
+        "title": "视频编码",
+        "service": "P2P视频流",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [
+          {
+            "value": 0,
+            "description": "H264"
+          },
+          {
+            "value": 1,
+            "description": "H265"
+          }
+        ]
+      },
+      {
+        "key": "p:9:2",
+        "siid": 9,
+        "piid": 2,
+        "name": "audio-codec",
+        "title": "音频编码",
+        "service": "P2P视频流",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [
+          {
+            "value": 0,
+            "description": "G711A"
+          },
+          {
+            "value": 1,
+            "description": "ACC"
+          },
+          {
+            "value": 2,
+            "description": "OPUS"
+          },
+          {
+            "value": 3,
+            "description": "PCM"
+          }
+        ]
+      },
+      {
+        "key": "p:9:3",
+        "siid": 9,
+        "piid": 3,
+        "name": "audio-bit-width",
+        "title": "录制音频位宽",
+        "service": "P2P视频流",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [
+          {
+            "value": 0,
+            "description": "8"
+          },
+          {
+            "value": 1,
+            "description": "16"
+          }
+        ]
+      },
+      {
+        "key": "p:9:4",
+        "siid": 9,
+        "piid": 4,
+        "name": "audio-smp-rate",
+        "title": "录制音频采样率",
+        "service": "P2P视频流",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [
+          {
+            "value": 0,
+            "description": "8"
+          },
+          {
+            "value": 1,
+            "description": "16"
+          },
+          {
+            "value": 2,
+            "description": "32"
+          },
+          {
+            "value": 3,
+            "description": "48"
+          }
+        ]
+      },
+      {
+        "key": "p:9:5",
+        "siid": 9,
+        "piid": 5,
+        "name": "audio-channel",
+        "title": "录制音频单双通道",
+        "service": "P2P视频流",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [
+          {
+            "value": 0,
+            "description": "单声道"
+          },
+          {
+            "value": 1,
+            "description": "双声道"
+          }
+        ]
+      },
+      {
+        "key": "p:9:6",
+        "siid": 9,
+        "piid": 6,
+        "name": "talk-codec",
+        "title": "对讲编码格式",
+        "service": "P2P视频流",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [
+          {
+            "value": 0,
+            "description": "G711A"
+          },
+          {
+            "value": 1,
+            "description": "ACC"
+          },
+          {
+            "value": 2,
+            "description": "OPUS"
+          },
+          {
+            "value": 3,
+            "description": "PCM"
+          }
+        ]
+      },
+      {
+        "key": "p:9:7",
+        "siid": 9,
+        "piid": 7,
+        "name": "distortion-crt-osdx",
+        "title": "畸变纠正参数比例-宽",
+        "service": "P2P视频流",
+        "format": "float",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          1,
+          0.0001
+        ]
+      },
+      {
+        "key": "p:9:8",
+        "siid": 9,
+        "piid": 8,
+        "name": "distortion-crt-osdy",
+        "title": "畸变纠正参数比例-高",
+        "service": "P2P视频流",
+        "format": "float",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          0,
+          1,
+          0.0001
+        ]
+      },
+      {
+        "key": "p:9:9",
+        "siid": 9,
+        "piid": 9,
+        "name": "resolution-types",
+        "title": "视频画质/分辨率",
+        "service": "P2P视频流",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [
+          {
+            "value": 1,
+            "description": "848*480"
+          },
+          {
+            "value": 10,
+            "description": "3200*1800"
+          }
+        ]
+      },
+      {
+        "key": "p:9:10",
+        "siid": 9,
+        "piid": 10,
+        "name": "talk-mode",
+        "title": "对讲方式",
+        "service": "P2P视频流",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [
+          {
+            "value": 0,
+            "description": "双向对讲"
+          },
+          {
+            "value": 1,
+            "description": "单向对讲"
+          }
+        ]
+      },
+      {
+        "key": "p:13:1",
+        "siid": 13,
+        "piid": 1,
+        "name": "smart-care-switch",
+        "title": "智能看护",
+        "service": "智能看护",
+        "format": "bool",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:13:3",
+        "siid": 13,
+        "piid": 3,
+        "name": "smart-care-mode",
+        "title": "看护场景",
+        "service": "智能看护",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [
+          {
+            "value": 0,
+            "description": "重点区域监测"
+          },
+          {
+            "value": 1,
+            "description": "宝宝睡眠监测"
+          },
+          {
+            "value": 2,
+            "description": "长时间无人移动"
+          }
+        ]
+      },
+      {
+        "key": "p:13:4",
+        "siid": 13,
+        "piid": 4,
+        "name": "enable-time-period",
+        "title": "智能看护时间段",
+        "service": "智能看护",
+        "format": "string",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      },
+      {
+        "key": "p:14:1",
+        "siid": 14,
+        "piid": 1,
+        "name": "gop-value",
+        "title": "连续画面时长",
+        "service": "摄像机云服务",
+        "format": "uint8",
+        "unit": "seconds",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          3,
+          10,
+          1
+        ]
+      },
+      {
+        "key": "p:14:2",
+        "siid": 14,
+        "piid": 2,
+        "name": "vip-offset-num",
+        "title": "会员分片数",
+        "service": "摄像机云服务",
+        "format": "uint16",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          1,
+          600,
+          1
+        ]
+      },
+      {
+        "key": "p:14:3",
+        "siid": 14,
+        "piid": 3,
+        "name": "non-vip-offset-num",
+        "title": "非会员分片数",
+        "service": "摄像机云服务",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [],
+        "range": [
+          1,
+          3,
+          1
+        ]
+      },
+      {
+        "key": "p:19:3",
+        "siid": 19,
+        "piid": 3,
+        "name": "status",
+        "title": "工作状态",
+        "service": "NAS",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": [
+          {
+            "value": 0,
+            "description": "正常"
+          },
+          {
+            "value": 1,
+            "description": "NAS设备离线"
+          }
+        ]
+      },
+      {
+        "key": "p:23:1",
+        "siid": 23,
+        "piid": 1,
+        "name": "qrcode-information",
+        "title": "设备二维码信息",
+        "service": "额外设备信息",
+        "format": "string",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": []
+      },
+      {
+        "key": "p:40:2",
+        "siid": 40,
+        "piid": 2,
+        "name": "self-check-results",
+        "title": "自检结果",
+        "service": "自检服务",
+        "format": "string",
+        "unit": "",
+        "readable": true,
+        "writable": false,
+        "choices": []
+      },
+      {
+        "key": "p:40:3",
+        "siid": 40,
+        "piid": 3,
+        "name": "manual-check-results",
+        "title": "手动检测结果",
+        "service": "自检服务",
+        "format": "uint8",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": [
+          {
+            "value": 0,
+            "description": "检测正常"
+          },
+          {
+            "value": 1,
+            "description": "检测异常"
+          }
+        ]
+      },
+      {
+        "key": "p:24:1",
+        "siid": 24,
+        "piid": 1,
+        "name": "family-guard-config",
+        "title": "家人守护配置",
+        "service": "家人守护功能",
+        "format": "string",
+        "unit": "",
+        "readable": true,
+        "writable": true,
+        "choices": []
+      }
+    ],
+    "actions": [
+      {
+        "key": "a:2:1",
+        "siid": 2,
+        "aiid": 1,
+        "name": "ptz-calibrate",
+        "title": "云台校准",
+        "service": "摄像机控制",
+        "supported": true,
+        "inputs": []
+      },
+      {
+        "key": "a:2:2",
+        "siid": 2,
+        "aiid": 2,
+        "name": "restart-device",
+        "title": "重启设备",
+        "service": "摄像机控制",
+        "supported": true,
+        "inputs": []
+      },
+      {
+        "key": "a:3:2",
+        "siid": 3,
+        "aiid": 2,
+        "name": "pop-up",
+        "title": "弹出存储卡",
+        "service": "存储卡管理",
+        "supported": true,
+        "inputs": []
+      },
+      {
+        "key": "a:9:1",
+        "siid": 9,
+        "aiid": 1,
+        "name": "start-p2p-stream",
+        "title": "开始实时视频流",
+        "service": "P2P视频流",
+        "supported": true,
+        "inputs": []
+      },
+      {
+        "key": "a:9:2",
+        "siid": 9,
+        "aiid": 2,
+        "name": "stop-stream",
+        "title": "停止流",
+        "service": "P2P视频流",
+        "supported": true,
+        "inputs": []
+      },
+      {
+        "key": "a:9:3",
+        "siid": 9,
+        "aiid": 3,
+        "name": "upload-video",
+        "title": "录制视频并上传",
+        "service": "P2P视频流",
+        "supported": true,
+        "inputs": []
+      },
+      {
+        "key": "a:40:1",
+        "siid": 40,
+        "aiid": 1,
+        "name": "start-check",
+        "title": "开始自检",
+        "service": "自检服务",
+        "supported": true,
+        "inputs": [
+          {
+            "key": "p:40:1",
+            "siid": 40,
+            "piid": 1,
+            "name": "self-check-items",
+            "title": "自检项",
+            "service": "自检服务",
+            "format": "uint8",
+            "unit": "",
+            "readable": false,
+            "writable": false,
+            "choices": [
+              {
+                "value": 0,
+                "description": "存储卡状态检测"
+              },
+              {
+                "value": 1,
+                "description": "夜视检测"
+              },
+              {
+                "value": 2,
+                "description": "夜视状态重置"
+              },
+              {
+                "value": 3,
+                "description": "云台状态检测"
+              },
+              {
+                "value": 4,
+                "description": "画面显示检测"
+              },
+              {
+                "value": 5,
+                "description": "MIC回环检测"
+              },
+              {
+                "value": 6,
+                "description": "检测中标志"
+              },
+              {
+                "value": 7,
+                "description": "检测中心跳"
+              },
+              {
+                "value": 8,
+                "description": "MIC播放录音"
+              },
+              {
+                "value": 9,
+                "description": "Wifi/App连接检测"
+              },
+              {
+                "value": 10,
+                "description": "看家助手检测"
+              },
+              {
+                "value": 11,
+                "description": "SD卡状态及功能检测"
+              },
+              {
+                "value": 12,
+                "description": "卡一键修复标志"
+              },
+              {
+                "value": 13,
+                "description": "是否换卡标志"
+              },
+              {
+                "value": 14,
+                "description": "卡检测超时标志"
+              },
+              {
+                "value": 15,
+                "description": "检测中断标志"
+              },
+              {
+                "value": 16,
+                "description": "电源电压检测"
+              },
+              {
+                "value": 17,
+                "description": "MIC停止录音"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "a:40:2",
+        "siid": 40,
+        "aiid": 2,
+        "name": "stop-check",
+        "title": "终止自检",
+        "service": "自检服务",
+        "supported": true,
+        "inputs": []
+      },
+      {
+        "key": "a:40:3",
+        "siid": 40,
+        "aiid": 3,
+        "name": "sync-manual-check",
+        "title": "同步手动检测项及结果",
+        "service": "自检服务",
+        "supported": true,
+        "inputs": [
+          {
+            "key": "p:40:1",
+            "siid": 40,
+            "piid": 1,
+            "name": "self-check-items",
+            "title": "自检项",
+            "service": "自检服务",
+            "format": "uint8",
+            "unit": "",
+            "readable": false,
+            "writable": false,
+            "choices": [
+              {
+                "value": 0,
+                "description": "存储卡状态检测"
+              },
+              {
+                "value": 1,
+                "description": "夜视检测"
+              },
+              {
+                "value": 2,
+                "description": "夜视状态重置"
+              },
+              {
+                "value": 3,
+                "description": "云台状态检测"
+              },
+              {
+                "value": 4,
+                "description": "画面显示检测"
+              },
+              {
+                "value": 5,
+                "description": "MIC回环检测"
+              },
+              {
+                "value": 6,
+                "description": "检测中标志"
+              },
+              {
+                "value": 7,
+                "description": "检测中心跳"
+              },
+              {
+                "value": 8,
+                "description": "MIC播放录音"
+              },
+              {
+                "value": 9,
+                "description": "Wifi/App连接检测"
+              },
+              {
+                "value": 10,
+                "description": "看家助手检测"
+              },
+              {
+                "value": 11,
+                "description": "SD卡状态及功能检测"
+              },
+              {
+                "value": 12,
+                "description": "卡一键修复标志"
+              },
+              {
+                "value": 13,
+                "description": "是否换卡标志"
+              },
+              {
+                "value": 14,
+                "description": "卡检测超时标志"
+              },
+              {
+                "value": 15,
+                "description": "检测中断标志"
+              },
+              {
+                "value": 16,
+                "description": "电源电压检测"
+              },
+              {
+                "value": 17,
+                "description": "MIC停止录音"
+              }
+            ]
+          },
+          {
+            "key": "p:40:3",
+            "siid": 40,
+            "piid": 3,
+            "name": "manual-check-results",
+            "title": "手动检测结果",
+            "service": "自检服务",
+            "format": "uint8",
+            "unit": "",
+            "readable": true,
+            "writable": true,
+            "choices": [
+              {
+                "value": 0,
+                "description": "检测正常"
+              },
+              {
+                "value": 1,
+                "description": "检测异常"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "a:40:4",
+        "siid": 40,
+        "aiid": 4,
+        "name": "one-key-repair",
+        "title": "一键修复",
+        "service": "自检服务",
+        "supported": true,
+        "inputs": []
+      }
+    ]
+  }
+]

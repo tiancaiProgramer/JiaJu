@@ -1,0 +1,12 @@
+{
+  "apk_sha256": "3e1970ac5dcbb3d593a60335491aaf6f3c46265fde98a8fd85752f221959c367",
+  "instrumentation_success": true,
+  "results": {
+    "real_media_captured": false,
+    "synthetic_avc_samples": 12,
+    "synthetic_files_removed": true,
+    "synthetic_hevc_samples": 12,
+    "synthetic_mp4_roundtrip": true,
+    "synthetic_png_roundtrip": true
+  }
+}

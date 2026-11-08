@@ -1,6 +1,7 @@
 build/
 dist/
 .local/
+tools/toolchains/
 local/
 private-signing/
 _backup/
@@ -12,3 +13,11 @@ __pycache__/
 *.bundle
 *.zip
 CONTINUATION-NAS.txt
+
+# Generated/private evidence stays local; only reviewed summaries are force-added.
+testing/
+*.class
+
+# Authorized official-program research and downloaded reference copies are not source.
+research/*-private-plugins/
+research/20261108-protocol/

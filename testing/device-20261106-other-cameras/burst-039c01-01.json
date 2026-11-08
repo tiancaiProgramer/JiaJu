@@ -1,0 +1,66 @@
+{
+  "model": "chuangmi.camera.039c01",
+  "model_index": 0,
+  "watch_seconds": 30,
+  "started_utc": "2026-11-06T14:39:32.272629+00:00",
+  "apk_sha256": "578cd5af7f9751da434bcffb09b639b6670250a477030b224653cd17fb727d3e",
+  "apk_path": "dist\\windows-20261106-multicamera-burst\\JiaJu-0.0.11.apk",
+  "passed": true,
+  "missing_checks": [],
+  "timed_out": false,
+  "adb_launch_codes": [
+    0
+  ],
+  "progress": [
+    {
+      "rendered": 227,
+      "watch_ms": 15017
+    },
+    {
+      "rendered": 453,
+      "watch_ms": 30037
+    }
+  ],
+  "progress_advancing": true,
+  "watch_complete": true,
+  "results": {
+    "camera_model": "chuangmi.camera.039c01",
+    "camera_ui_back_exits_fullscreen": true,
+    "camera_ui_command_replies": 0,
+    "camera_ui_continuous_rendering": true,
+    "camera_ui_curated_setting_count": 4,
+    "camera_ui_disconnect_on_exit": true,
+    "camera_ui_exit_fullscreen_same_session": true,
+    "camera_ui_first_frame_ms": 2414,
+    "camera_ui_flip_degree_choices": true,
+    "camera_ui_frames_initial": 3,
+    "camera_ui_frames_later": 453,
+    "camera_ui_fullscreen_keeps_playing": true,
+    "camera_ui_fullscreen_landscape": true,
+    "camera_ui_fullscreen_same_session": true,
+    "camera_ui_fullscreen_surface_height": 1080,
+    "camera_ui_fullscreen_surface_width": 1920,
+    "camera_ui_layout_unchanged": true,
+    "camera_ui_route_correct": true,
+    "camera_ui_same_session_during_watch": true,
+    "camera_ui_setting_keys": [
+      "p:2:3",
+      "p:2:2",
+      "p:2:9",
+      "p:3:1"
+    ],
+    "camera_ui_settings_same_session": true,
+    "camera_ui_status_overlay_hidden": true,
+    "camera_ui_surface_height": 608,
+    "camera_ui_surface_width": 1080,
+    "haier_devices": 1,
+    "logged_in": true,
+    "mijia_devices": 50,
+    "physical_commands_sent": false,
+    "screen_render_duration_ms": 30038,
+    "screen_render_fps": 14.9,
+    "screen_render_gap_max_ms": 292,
+    "screen_render_gap_p95_ms": 207,
+    "video_saved_to_storage": false
+  }
+}

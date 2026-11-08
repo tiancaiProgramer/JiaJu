@@ -1,0 +1,154 @@
+{
+  "date": "2026-11-06",
+  "version": "0.0.11",
+  "version_code": 11,
+  "scope": "User requested other online cameras; offline camera testing deferred at user request.",
+  "source_base_commit": "6158d4b5bf74dfdcbd7cb876436b8483f29ff310",
+  "installed_apk_path": "dist/windows-20261106-multicamera-verified/JiaJu-0.0.11.apk",
+  "installed_apk_sha256": "ffc775c9af64d500e8c5bad8131648199e20c1afd342fdaa86c424f466afc612",
+  "installed_hash_matches_local": true,
+  "same_release_signer": true,
+  "build_checks": {
+    "jvm": 377,
+    "python": 7,
+    "go": 11
+  },
+  "final_apk_camera_results": [
+    {
+      "model": "chuangmi.camera.069a01",
+      "model_index": 2,
+      "watch_seconds": 180,
+      "first_frame_ms": 3522,
+      "frames_later": 1800,
+      "screen_fps": 10.0,
+      "screen_gap_max_ms": 1256,
+      "media_handoff_attempts": 0,
+      "all_13_ui_checks_passed": true,
+      "progress_advanced_through_watch": true,
+      "evidence": "testing/device-20261106-other-cameras/verified-069a01-other-01.json"
+    },
+    {
+      "model": "xiaomi.camera.c302",
+      "model_index": 0,
+      "watch_seconds": 30,
+      "first_frame_ms": 2018,
+      "frames_later": 310,
+      "screen_fps": 10.2,
+      "screen_gap_max_ms": 299,
+      "media_handoff_attempts": 1,
+      "all_13_ui_checks_passed": true,
+      "progress_advanced_through_watch": true,
+      "evidence": "testing/device-20261106-other-cameras/verified-c302-01.json"
+    },
+    {
+      "model": "chuangmi.camera.039c01",
+      "model_index": 0,
+      "watch_seconds": 30,
+      "first_frame_ms": 1361,
+      "frames_later": 468,
+      "screen_fps": 15.0,
+      "screen_gap_max_ms": 222,
+      "media_handoff_attempts": 1,
+      "all_13_ui_checks_passed": true,
+      "progress_advanced_through_watch": true,
+      "evidence": "testing/device-20261106-other-cameras/verified-039c01-01.json"
+    },
+    {
+      "model": "chuangmi.camera.069a01",
+      "model_index": 1,
+      "watch_seconds": 15,
+      "first_frame_ms": 1161,
+      "frames_later": 303,
+      "screen_fps": 19.9,
+      "screen_gap_max_ms": 68,
+      "media_handoff_attempts": 0,
+      "all_13_ui_checks_passed": true,
+      "progress_advanced_through_watch": true,
+      "evidence": "testing/device-20261106-other-cameras/verified-069a01-original-01.json"
+    }
+  ],
+  "earlier_three_minute_evidence": [
+    {
+      "model": "chuangmi.camera.039c01",
+      "watch_seconds": 180,
+      "frames_later": 2712,
+      "fps": 15.0,
+      "apk_sha256": "a32a6d140572526e3c05899d6fadd652d86e1dfe81eb7d85fc2cdf74bf536297",
+      "evidence": "testing/device-20261106-other-cameras/final-039c01-01.json",
+      "note": "Earlier 0.0.11 build; evidence belongs to that hash, not the final APK."
+    },
+    {
+      "model": "xiaomi.camera.c302",
+      "watch_seconds": 180,
+      "frames_later": 1819,
+      "fps": 10.0,
+      "apk_sha256": "578cd5af7f9751da434bcffb09b639b6670250a477030b224653cd17fb727d3e",
+      "evidence": "testing/device-20261106-other-cameras/burst-c302-01.json",
+      "note": "Earlier 0.0.11 build; evidence belongs to that hash, not the final APK."
+    }
+  ],
+  "model_specific_setting_keys": {
+    "chuangmi.camera.069a01": [
+      "p:2:3",
+      "p:2:2",
+      "p:2:9",
+      "p:3:1"
+    ],
+    "chuangmi.camera.039c01": [
+      "p:2:3",
+      "p:2:2",
+      "p:2:9",
+      "p:3:1"
+    ],
+    "xiaomi.camera.c302": [
+      "p:2:3",
+      "p:2:4",
+      "p:2:5",
+      "p:4:1"
+    ]
+  },
+  "c302_rotation_degrees": [
+    0,
+    90,
+    180,
+    270
+  ],
+  "deferred_offline_models": [
+    "chuangmi.camera.039a01",
+    "chuangmi.camera.029a02"
+  ],
+  "other_offline_device": "An additional 069a01 was also offline; its same-model video code is enabled but playback was not accepted as tested.",
+  "initial_failures_retained": [
+    "ui-summary.json",
+    "final-c302-01.json",
+    "final-069a01-other-01.json",
+    "burst-069a01-other-01.json"
+  ],
+  "fixes": [
+    "Allowlist 039c01 and c302 in Java and native bridge.",
+    "Use exact model/property-name/key mapping for image settings.",
+    "Send directory retries to explicit ticket directory targets instead of the mutable probe peer.",
+    "At startup, try at most two distinct media endpoints when the first is not ready; retain overall timeout."
+  ],
+  "limitations": [
+    "Final live runs used 0 or 1 media handoff attempts. The second-candidate branch has unit coverage, but was not observed on real hardware in this acceptance run.",
+    "Earlier runs had intermittent connect/auth failures; these are not erased and the short final runs do not guarantee zero future failures.",
+    "Streaming fps varied by device/network; the other 069a01 had a maximum observed presentation gap of 1256 ms in its three-minute run.",
+    "No audio, PTZ, talk-back, recording, playback history or new-model HD acceptance.",
+    "Final 039c01/c302 runs were 30 seconds; their three-minute results were from earlier 0.0.11 APKs with separately recorded hashes."
+  ],
+  "logged_in_after_update": true,
+  "cached_devices": {
+    "mijia": 50,
+    "haier": 1
+  },
+  "home_layout_unchanged": true,
+  "temporary_checker_removed": true,
+  "native_process_absent_after_exit": true,
+  "physical_settings_written": false,
+  "screenshots_taken": false,
+  "video_saved_to_storage": false,
+  "camera_reuse_enabled": false,
+  "ui_auto_recovery_enabled": false,
+  "committed_or_pushed": false
+}

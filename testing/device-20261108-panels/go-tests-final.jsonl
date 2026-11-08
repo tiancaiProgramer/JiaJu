@@ -1,0 +1,72 @@
+{"Time":"2026-11-08T09:59:08.0551497+08:00","Action":"start","Package":"jiaju.camera"}
+{"Time":"2026-11-08T09:59:08.0556491+08:00","Action":"start","Package":"jiaju.camera/internal/cs2"}
+{"Time":"2026-11-08T09:59:08.6141612+08:00","Action":"run","Package":"jiaju.camera/internal/cs2","Test":"TestDirectoryResendsUseAllExplicitTargets"}
+{"Time":"2026-11-08T09:59:08.6141612+08:00","Action":"output","Package":"jiaju.camera/internal/cs2","Test":"TestDirectoryResendsUseAllExplicitTargets","Output":"=== RUN   TestDirectoryResendsUseAllExplicitTargets\n"}
+{"Time":"2026-11-08T09:59:08.6141612+08:00","Action":"output","Package":"jiaju.camera/internal/cs2","Test":"TestDirectoryResendsUseAllExplicitTargets","Output":"--- PASS: TestDirectoryResendsUseAllExplicitTargets (0.00s)\n"}
+{"Time":"2026-11-08T09:59:08.6141612+08:00","Action":"pass","Package":"jiaju.camera/internal/cs2","Test":"TestDirectoryResendsUseAllExplicitTargets","Elapsed":0}
+{"Time":"2026-11-08T09:59:08.6141612+08:00","Action":"run","Package":"jiaju.camera/internal/cs2","Test":"TestDirectoryBurstReturnsWriteFailure"}
+{"Time":"2026-11-08T09:59:08.6141612+08:00","Action":"output","Package":"jiaju.camera/internal/cs2","Test":"TestDirectoryBurstReturnsWriteFailure","Output":"=== RUN   TestDirectoryBurstReturnsWriteFailure\n"}
+{"Time":"2026-11-08T09:59:08.6141612+08:00","Action":"output","Package":"jiaju.camera/internal/cs2","Test":"TestDirectoryBurstReturnsWriteFailure","Output":"--- PASS: TestDirectoryBurstReturnsWriteFailure (0.00s)\n"}
+{"Time":"2026-11-08T09:59:08.6141612+08:00","Action":"pass","Package":"jiaju.camera/internal/cs2","Test":"TestDirectoryBurstReturnsWriteFailure","Elapsed":0}
+{"Time":"2026-11-08T09:59:08.6141612+08:00","Action":"run","Package":"jiaju.camera/internal/cs2","Test":"TestMediaCandidateFallbackSkipsFailedEndpoint"}
+{"Time":"2026-11-08T09:59:08.6141612+08:00","Action":"output","Package":"jiaju.camera/internal/cs2","Test":"TestMediaCandidateFallbackSkipsFailedEndpoint","Output":"=== RUN   TestMediaCandidateFallbackSkipsFailedEndpoint\n"}
+{"Time":"2026-11-08T09:59:08.6141612+08:00","Action":"output","Package":"jiaju.camera/internal/cs2","Test":"TestMediaCandidateFallbackSkipsFailedEndpoint","Output":"--- PASS: TestMediaCandidateFallbackSkipsFailedEndpoint (0.00s)\n"}
+{"Time":"2026-11-08T09:59:08.6141612+08:00","Action":"pass","Package":"jiaju.camera/internal/cs2","Test":"TestMediaCandidateFallbackSkipsFailedEndpoint","Elapsed":0}
+{"Time":"2026-11-08T09:59:08.6141612+08:00","Action":"run","Package":"jiaju.camera/internal/cs2","Test":"TestMediaWarmupCanStopWithoutAnotherFrame"}
+{"Time":"2026-11-08T09:59:08.6141612+08:00","Action":"output","Package":"jiaju.camera/internal/cs2","Test":"TestMediaWarmupCanStopWithoutAnotherFrame","Output":"=== RUN   TestMediaWarmupCanStopWithoutAnotherFrame\n"}
+{"Time":"2026-11-08T09:59:08.6141612+08:00","Action":"output","Package":"jiaju.camera/internal/cs2","Test":"TestMediaWarmupCanStopWithoutAnotherFrame","Output":"--- PASS: TestMediaWarmupCanStopWithoutAnotherFrame (0.00s)\n"}
+{"Time":"2026-11-08T09:59:08.6141612+08:00","Action":"pass","Package":"jiaju.camera/internal/cs2","Test":"TestMediaWarmupCanStopWithoutAnotherFrame","Elapsed":0}
+{"Time":"2026-11-08T09:59:08.6141612+08:00","Action":"run","Package":"jiaju.camera/internal/cs2","Test":"TestCloudFailureDiagnosticsAreFixedEnums"}
+{"Time":"2026-11-08T09:59:08.6141612+08:00","Action":"output","Package":"jiaju.camera/internal/cs2","Test":"TestCloudFailureDiagnosticsAreFixedEnums","Output":"=== RUN   TestCloudFailureDiagnosticsAreFixedEnums\n"}
+{"Time":"2026-11-08T09:59:08.6141612+08:00","Action":"output","Package":"jiaju.camera/internal/cs2","Test":"TestCloudFailureDiagnosticsAreFixedEnums","Output":"--- PASS: TestCloudFailureDiagnosticsAreFixedEnums (0.00s)\n"}
+{"Time":"2026-11-08T09:59:08.6146644+08:00","Action":"pass","Package":"jiaju.camera/internal/cs2","Test":"TestCloudFailureDiagnosticsAreFixedEnums","Elapsed":0}
+{"Time":"2026-11-08T09:59:08.6146644+08:00","Action":"run","Package":"jiaju.camera/internal/cs2","Test":"TestDirectoryKnownWireSample"}
+{"Time":"2026-11-08T09:59:08.6146644+08:00","Action":"output","Package":"jiaju.camera/internal/cs2","Test":"TestDirectoryKnownWireSample","Output":"=== RUN   TestDirectoryKnownWireSample\n"}
+{"Time":"2026-11-08T09:59:08.6146644+08:00","Action":"output","Package":"jiaju.camera/internal/cs2","Test":"TestDirectoryKnownWireSample","Output":"--- PASS: TestDirectoryKnownWireSample (0.00s)\n"}
+{"Time":"2026-11-08T09:59:08.6146644+08:00","Action":"pass","Package":"jiaju.camera/internal/cs2","Test":"TestDirectoryKnownWireSample","Elapsed":0}
+{"Time":"2026-11-08T09:59:08.6146644+08:00","Action":"run","Package":"jiaju.camera/internal/cs2","Test":"TestExactUIDBlock"}
+{"Time":"2026-11-08T09:59:08.6146644+08:00","Action":"output","Package":"jiaju.camera/internal/cs2","Test":"TestExactUIDBlock","Output":"=== RUN   TestExactUIDBlock\n"}
+{"Time":"2026-11-08T09:59:08.6146644+08:00","Action":"output","Package":"jiaju.camera/internal/cs2","Test":"TestExactUIDBlock","Output":"--- PASS: TestExactUIDBlock (0.00s)\n"}
+{"Time":"2026-11-08T09:59:08.6146644+08:00","Action":"pass","Package":"jiaju.camera/internal/cs2","Test":"TestExactUIDBlock","Elapsed":0}
+{"Time":"2026-11-08T09:59:08.6146644+08:00","Action":"run","Package":"jiaju.camera/internal/cs2","Test":"TestBoundedChannelAssembly"}
+{"Time":"2026-11-08T09:59:08.6146644+08:00","Action":"output","Package":"jiaju.camera/internal/cs2","Test":"TestBoundedChannelAssembly","Output":"=== RUN   TestBoundedChannelAssembly\n"}
+{"Time":"2026-11-08T09:59:08.6146644+08:00","Action":"output","Package":"jiaju.camera/internal/cs2","Test":"TestBoundedChannelAssembly","Output":"--- PASS: TestBoundedChannelAssembly (0.00s)\n"}
+{"Time":"2026-11-08T09:59:08.6146644+08:00","Action":"pass","Package":"jiaju.camera/internal/cs2","Test":"TestBoundedChannelAssembly","Elapsed":0}
+{"Time":"2026-11-08T09:59:08.6146644+08:00","Action":"run","Package":"jiaju.camera/internal/cs2","Test":"TestDirectProbeBudgetKeepsFallback"}
+{"Time":"2026-11-08T09:59:08.6146644+08:00","Action":"output","Package":"jiaju.camera/internal/cs2","Test":"TestDirectProbeBudgetKeepsFallback","Output":"=== RUN   TestDirectProbeBudgetKeepsFallback\n"}
+{"Time":"2026-11-08T09:59:08.6146644+08:00","Action":"output","Package":"jiaju.camera/internal/cs2","Test":"TestDirectProbeBudgetKeepsFallback","Output":"--- PASS: TestDirectProbeBudgetKeepsFallback (0.00s)\n"}
+{"Time":"2026-11-08T09:59:08.6146644+08:00","Action":"pass","Package":"jiaju.camera/internal/cs2","Test":"TestDirectProbeBudgetKeepsFallback","Elapsed":0}
+{"Time":"2026-11-08T09:59:08.6146644+08:00","Action":"run","Package":"jiaju.camera/internal/cs2","Test":"TestSessionReplyWireAndBoundaries"}
+{"Time":"2026-11-08T09:59:08.6146644+08:00","Action":"output","Package":"jiaju.camera/internal/cs2","Test":"TestSessionReplyWireAndBoundaries","Output":"=== RUN   TestSessionReplyWireAndBoundaries\n"}
+{"Time":"2026-11-08T09:59:08.6146644+08:00","Action":"output","Package":"jiaju.camera/internal/cs2","Test":"TestSessionReplyWireAndBoundaries","Output":"--- PASS: TestSessionReplyWireAndBoundaries (0.00s)\n"}
+{"Time":"2026-11-08T09:59:08.6146644+08:00","Action":"pass","Package":"jiaju.camera/internal/cs2","Test":"TestSessionReplyWireAndBoundaries","Elapsed":0}
+{"Time":"2026-11-08T09:59:08.6146644+08:00","Action":"run","Package":"jiaju.camera/internal/cs2","Test":"TestCommandReplyQueueRequiresConsumer"}
+{"Time":"2026-11-08T09:59:08.6146644+08:00","Action":"output","Package":"jiaju.camera/internal/cs2","Test":"TestCommandReplyQueueRequiresConsumer","Output":"=== RUN   TestCommandReplyQueueRequiresConsumer\n"}
+{"Time":"2026-11-08T09:59:08.6146644+08:00","Action":"output","Package":"jiaju.camera/internal/cs2","Test":"TestCommandReplyQueueRequiresConsumer","Output":"--- PASS: TestCommandReplyQueueRequiresConsumer (0.00s)\n"}
+{"Time":"2026-11-08T09:59:08.6146644+08:00","Action":"pass","Package":"jiaju.camera/internal/cs2","Test":"TestCommandReplyQueueRequiresConsumer","Elapsed":0}
+{"Time":"2026-11-08T09:59:08.6146644+08:00","Action":"output","Package":"jiaju.camera/internal/cs2","Output":"PASS\n"}
+{"Time":"2026-11-08T09:59:08.616543+08:00","Action":"output","Package":"jiaju.camera/internal/cs2","Output":"ok  \tjiaju.camera/internal/cs2\t0.561s\n"}
+{"Time":"2026-11-08T09:59:08.6231611+08:00","Action":"pass","Package":"jiaju.camera/internal/cs2","Elapsed":0.568}
+{"Time":"2026-11-08T09:59:09.1590205+08:00","Action":"run","Package":"jiaju.camera","Test":"TestCameraControlPayloads"}
+{"Time":"2026-11-08T09:59:09.1595215+08:00","Action":"output","Package":"jiaju.camera","Test":"TestCameraControlPayloads","Output":"=== RUN   TestCameraControlPayloads\n"}
+{"Time":"2026-11-08T09:59:09.1595215+08:00","Action":"output","Package":"jiaju.camera","Test":"TestCameraControlPayloads","Output":"--- PASS: TestCameraControlPayloads (0.00s)\n"}
+{"Time":"2026-11-08T09:59:09.1595215+08:00","Action":"pass","Package":"jiaju.camera","Test":"TestCameraControlPayloads","Elapsed":0}
+{"Time":"2026-11-08T09:59:09.1595215+08:00","Action":"run","Package":"jiaju.camera","Test":"TestCameraControlReply"}
+{"Time":"2026-11-08T09:59:09.1595215+08:00","Action":"output","Package":"jiaju.camera","Test":"TestCameraControlReply","Output":"=== RUN   TestCameraControlReply\n"}
+{"Time":"2026-11-08T09:59:09.1595215+08:00","Action":"output","Package":"jiaju.camera","Test":"TestCameraControlReply","Output":"--- PASS: TestCameraControlReply (0.00s)\n"}
+{"Time":"2026-11-08T09:59:09.1595215+08:00","Action":"pass","Package":"jiaju.camera","Test":"TestCameraControlReply","Elapsed":0}
+{"Time":"2026-11-08T09:59:09.1595215+08:00","Action":"run","Package":"jiaju.camera","Test":"TestCameraModelScope"}
+{"Time":"2026-11-08T09:59:09.1595215+08:00","Action":"output","Package":"jiaju.camera","Test":"TestCameraModelScope","Output":"=== RUN   TestCameraModelScope\n"}
+{"Time":"2026-11-08T09:59:09.1595215+08:00","Action":"output","Package":"jiaju.camera","Test":"TestCameraModelScope","Output":"--- PASS: TestCameraModelScope (0.00s)\n"}
+{"Time":"2026-11-08T09:59:09.1595215+08:00","Action":"pass","Package":"jiaju.camera","Test":"TestCameraModelScope","Elapsed":0}
+{"Time":"2026-11-08T09:59:09.1595215+08:00","Action":"run","Package":"jiaju.camera","Test":"TestRecordingIndexFragmentsAndSelection"}
+{"Time":"2026-11-08T09:59:09.1595215+08:00","Action":"output","Package":"jiaju.camera","Test":"TestRecordingIndexFragmentsAndSelection","Output":"=== RUN   TestRecordingIndexFragmentsAndSelection\n"}
+{"Time":"2026-11-08T09:59:09.1595215+08:00","Action":"output","Package":"jiaju.camera","Test":"TestRecordingIndexFragmentsAndSelection","Output":"--- PASS: TestRecordingIndexFragmentsAndSelection (0.00s)\n"}
+{"Time":"2026-11-08T09:59:09.1595215+08:00","Action":"pass","Package":"jiaju.camera","Test":"TestRecordingIndexFragmentsAndSelection","Elapsed":0}
+{"Time":"2026-11-08T09:59:09.1595215+08:00","Action":"run","Package":"jiaju.camera","Test":"TestRecordingIndexBounds"}
+{"Time":"2026-11-08T09:59:09.1595215+08:00","Action":"output","Package":"jiaju.camera","Test":"TestRecordingIndexBounds","Output":"=== RUN   TestRecordingIndexBounds\n"}
+{"Time":"2026-11-08T09:59:09.1595215+08:00","Action":"output","Package":"jiaju.camera","Test":"TestRecordingIndexBounds","Output":"--- PASS: TestRecordingIndexBounds (0.00s)\n"}
+{"Time":"2026-11-08T09:59:09.1595215+08:00","Action":"pass","Package":"jiaju.camera","Test":"TestRecordingIndexBounds","Elapsed":0}
+{"Time":"2026-11-08T09:59:09.1595215+08:00","Action":"output","Package":"jiaju.camera","Output":"PASS\n"}
+{"Time":"2026-11-08T09:59:09.1620218+08:00","Action":"output","Package":"jiaju.camera","Output":"ok  \tjiaju.camera\t1.106s\n"}
+{"Time":"2026-11-08T09:59:09.1670213+08:00","Action":"pass","Package":"jiaju.camera","Elapsed":1.112}

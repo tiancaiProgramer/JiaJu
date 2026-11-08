@@ -28,7 +28,7 @@ func Dial(host, transport string) (*Conn, error) {
 		isTCP: isTCP,
 		done:  make(chan struct{}),
 		channels: [4]*dataChannel{
-			newDataChannel(0, 10), nil, newDataChannel(250, 100), nil,
+			newDataChannel(0, 10), newDataChannel(250, 100), newDataChannel(250, 100), nil,
 		},
 	}
 	go c.worker()
@@ -41,6 +41,7 @@ type Conn struct {
 
 	err    error
 	seqCh0 uint16
+	seqCh1 uint16
 	seqCh3 uint16
 
 	channels [4]*dataChannel
@@ -118,6 +119,9 @@ func (c *Conn) worker() {
 	defer c.Close()
 	defer func() {
 		c.channels[0].Close()
+		if c.channels[1] != nil {
+			c.channels[1].Close()
+		}
 		c.channels[2].Close()
 	}()
 
@@ -322,6 +326,59 @@ func (c *Conn) Close() error {
 
 const hdrSize = 32
 
+func (c *Conn) ReadIndexChunk() ([]byte, error) {
+	data, ok := c.channels[1].Pop()
+	if !ok {
+		return nil, c.Error()
+	}
+	return data, nil
+}
+
+func (c *Conn) DiscardQueuedMedia() {
+	for {
+		select {
+		case _, ok := <-c.channels[2].popBuf:
+			if !ok {
+				return
+			}
+		default:
+			return
+		}
+	}
+}
+
+func (c *Conn) DiscardMediaUntil(stop <-chan struct{}) {
+	for {
+		select {
+		case <-stop:
+			return
+		case _, ok := <-c.channels[2].popBuf:
+			if !ok {
+				return
+			}
+		}
+	}
+}
+
+func (c *Conn) WriteIndexRequest(encrypted []byte) error {
+	if len(encrypted) < 8 || len(encrypted) > 128 {
+		return fmt.Errorf("invalid index request")
+	}
+	n := len(encrypted)
+	packet := make([]byte, 12+n)
+	packet[0] = magic
+	packet[1] = msgDrw
+	binary.BigEndian.PutUint16(packet[2:], uint16(n+8))
+	packet[4] = magicDrw
+	packet[5] = 1
+	binary.BigEndian.PutUint16(packet[6:], c.seqCh1)
+	c.seqCh1++
+	binary.BigEndian.PutUint32(packet[8:], uint32(n))
+	copy(packet[12:], encrypted)
+	_, err := c.Conn.Write(packet)
+	return err
+}
+
 func (c *Conn) ReadPacket() (hdr, payload []byte, err error) {
 	data, ok := c.channels[2].Pop()
 	if !ok {
@@ -397,10 +454,11 @@ func newUDPConn(host string, port int) (net.Conn, error) {
 
 type udpConn struct {
 	*net.UDPConn
-	addr        *net.UDPAddr
-	renewMu     sync.Mutex
-	sessionEcho []byte
-	renewals    atomic.Uint64
+	addr            *net.UDPAddr
+	renewMu         sync.Mutex
+	sessionEcho     []byte
+	renewals        atomic.Uint64
+	handoffAttempts int
 }
 
 func (c *udpConn) Read(b []byte) (n int, err error) {

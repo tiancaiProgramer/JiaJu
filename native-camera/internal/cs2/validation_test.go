@@ -3,10 +3,46 @@ package cs2
 import (
 	"bytes"
 	"encoding/binary"
+	"fmt"
 	"net"
 	"testing"
 	"time"
 )
+
+func TestMediaWarmupCanStopWithoutAnotherFrame(t *testing.T) {
+	c := &Conn{}
+	c.channels[2] = newDataChannel(0, 2)
+	stop := make(chan struct{})
+	done := make(chan struct{})
+	go func() { c.DiscardMediaUntil(stop); close(done) }()
+	close(stop)
+	select {
+	case <-done:
+	case <-time.After(time.Second):
+		t.Fatal("warmup waited for a frame after cancellation")
+	}
+	c.channels[2].Close()
+	done = make(chan struct{})
+	go func() { c.DiscardQueuedMedia(); close(done) }()
+	select {
+	case <-done:
+	case <-time.After(time.Second):
+		t.Fatal("closed media queue did not stop draining")
+	}
+}
+
+func TestCloudFailureDiagnosticsAreFixedEnums(t *testing.T) {
+	for err, want := range map[error]string{
+		ErrCloudLookupTimeout:                     "cloud_lookup_timeout",
+		ErrCloudNoMediaHandoff:                    "cloud_no_media_handoff",
+		ErrCloudRelayNotReady:                     "cloud_relay_not_ready",
+		fmt.Errorf("private endpoint and ticket"): "cloud_connect_failed",
+	} {
+		if got := CloudFailureCode(fmt.Errorf("wrapped: %w", err)); got != want {
+			t.Fatalf("diagnostic = %q, want %q", got, want)
+		}
+	}
+}
 
 func TestDirectoryKnownWireSample(t *testing.T) {
 	// Public PPPP_DecodeString interoperability sample, not a user ticket.

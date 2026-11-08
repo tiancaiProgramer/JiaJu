@@ -3,6 +3,7 @@ package cs2
 
 import (
 	"encoding/binary"
+	"errors"
 	"fmt"
 	"net"
 	"strconv"
@@ -10,6 +11,24 @@ import (
 	"sync/atomic"
 	"time"
 )
+
+// Fixed diagnostics only: never include ticket fields, endpoints or packets.
+var ErrCloudLookupTimeout = errors.New("cs2 cloud: directory did not return punch info")
+var ErrCloudNoMediaHandoff = errors.New("cs2 cloud: no media handoff and no direct peer")
+var ErrCloudRelayNotReady = errors.New("cs2 cloud: media handoff did not become ready")
+
+func CloudFailureCode(err error) string {
+	switch {
+	case errors.Is(err, ErrCloudLookupTimeout):
+		return "cloud_lookup_timeout"
+	case errors.Is(err, ErrCloudNoMediaHandoff):
+		return "cloud_no_media_handoff"
+	case errors.Is(err, ErrCloudRelayNotReady):
+		return "cloud_relay_not_ready"
+	default:
+		return "cloud_connect_failed"
+	}
+}
 
 // DialCloud establishes a cs2 connection via Mi-Cloud relay (UDP/32100)
 // using NAT hole-punching. Required for cameras that do not expose the
@@ -34,7 +53,7 @@ func DialCloud(p2pID string, servers []string) (*Conn, error) {
 		isTCP: isTCP,
 		done:  make(chan struct{}),
 		channels: [4]*dataChannel{
-			newDataChannel(0, 10), nil, newDataChannel(250, 1000), nil,
+			newDataChannel(0, 10), newDataChannel(250, 100), newDataChannel(250, 1000), nil,
 		},
 	}
 	go c.worker()
@@ -547,12 +566,10 @@ func cloudHandshake(p2pID string, servers []string) (net.Conn, error) {
 	for natInfo == nil {
 		if time.Now().After(deadline) {
 			_ = udp.Close()
-			return nil, fmt.Errorf("cs2 cloud: timeout waiting for 0x40 NAT-punch info")
+			return nil, ErrCloudLookupTimeout
 		}
 		if time.Since(lastResend) > 1*time.Second {
-			for i := 0; i < 3; i++ {
-				_, _ = uc.Write(req20)
-			}
+			_ = sendDirectoryBurst(uc.UDPConn, relayAddrs, req20, 3)
 			lastResend = time.Now()
 		}
 		_ = uc.UDPConn.SetReadDeadline(time.Now().Add(1 * time.Second))
@@ -568,11 +585,9 @@ func cloudHandshake(p2pID string, servers []string) (net.Conn, error) {
 		if natInfo != nil && !sent67 {
 			sent67 = true
 			// app: 0x20 resend burst right after the punch-infos, then 0x67 x3
+			_ = sendDirectoryBurst(uc.UDPConn, relayAddrs, req20, 3)
 			for i := 0; i < 3; i++ {
-				_, _ = uc.Write(req20)
-			}
-			for i := 0; i < 3; i++ {
-				_, _ = uc.Write(req67)
+				_ = sendDirectoryBurst(uc.UDPConn, relayAddrs, req67, 1)
 				time.Sleep(30 * time.Millisecond)
 			}
 		}
@@ -655,7 +670,14 @@ func cloudHandshake(p2pID string, servers []string) (net.Conn, error) {
 	// 0x84/0x28 arrive from the session server on an ephemeral port, echo the
 	// 0x28 (flag byte -> 02), then 0xF9 auth x3 to the relay. The p2p block
 	// is 17 bytes, so the punch payload = token4 + block17 + zeros7 = 0x1C.
-	if len(mediaToks) > 0 {
+	failedMedia := make(map[string]bool)
+	for mediaAttempt := 0; mediaAttempt < maxMediaHandoffAttempts && len(mediaToks) > 0; mediaAttempt++ {
+		if nextMediaCandidate(mediaToks, failedMedia) == nil {
+			break
+		}
+		// The previous candidate's write deadline must not suppress the next hello.
+		_ = uc.SetDeadline(time.Time{})
+		uc.handoffAttempts = mediaAttempt + 1
 		punchTokens := func() {
 			toks := mediaToks
 			if len(toks) > 12 {
@@ -675,6 +697,9 @@ func cloudHandshake(p2pID string, servers []string) (net.Conn, error) {
 		}
 		punchTokens()
 		for _, tk := range mediaToks {
+			if failedMedia[tk.addr.String()] {
+				continue
+			}
 			uc.addr = tk.addr
 			_, _ = uc.Write([]byte{magic, 0x70, 0x00, 0x00})
 		}
@@ -696,7 +721,7 @@ func cloudHandshake(p2pID string, servers []string) (net.Conn, error) {
 			}
 			collect(n)
 			if n >= 4 && buf[0] == magic && from != nil {
-				if buf[1] == 0x71 {
+				if buf[1] == 0x71 && !failedMedia[from.String()] {
 					chosen = from
 				} else if buf[1] == msgP2PRdyUDP {
 					return finish(from)
@@ -708,7 +733,10 @@ func cloudHandshake(p2pID string, servers []string) (net.Conn, error) {
 			}
 		}
 		if chosen == nil {
-			chosen = mediaToks[0].addr
+			chosen = nextMediaCandidate(mediaToks, failedMedia)
+		}
+		if chosen == nil {
+			break
 		}
 		uc.addr = chosen
 		_, _ = uc.Write([]byte{magic, 0x72, 0x00, 0x00})
@@ -899,6 +927,7 @@ func cloudHandshake(p2pID string, servers []string) (net.Conn, error) {
 		if sessFrom != nil {
 			return finish(sessFrom)
 		}
+		failedMedia[chosen.String()] = true
 	}
 
 	// ---- Phase D: legacy direct punch (punchable cameras) — but keep
@@ -969,7 +998,10 @@ func cloudHandshake(p2pID string, servers []string) (net.Conn, error) {
 	}
 
 	_ = udp.Close()
-	return nil, fmt.Errorf("cs2 cloud: all punch paths failed")
+	if len(mediaToks) == 0 {
+		return nil, ErrCloudNoMediaHandoff
+	}
+	return nil, ErrCloudRelayNotReady
 }
 
 type handoffTok struct {

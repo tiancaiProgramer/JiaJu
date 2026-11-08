@@ -76,6 +76,12 @@ final class MijiaCloud {
             command.accepted(response);return "操作已受理，正在同步设备状态";
         }catch(Authentication e){DeviceStore.putPreference(c,"mijia_auth_state","expired");throw e;}
     }
+    static synchronized String controlGroup(Context c,String id,JSONArray changes)throws Exception{
+        if(changes==null||changes.length()<1||changes.length()>16)throw new IOException("设置数量不支持");android.app.KeyguardManager guard=c.getSystemService(android.app.KeyguardManager.class);if(guard==null||guard.isDeviceLocked())throw new IOException("请先解锁手机");
+        try(MijiaVault vault=new MijiaVault(c)){MijiaCloud cloud=new MijiaCloud(c,vault);cloud.publish();JSONObject record=cloud.record(id),current=cloud.read(id,false);if(current.optInt("state")!=1)throw new IOException("设备离线，暂不发送设置");List<MijiaCommand> commands=new ArrayList<>();Set<String> keys=new HashSet<>();for(int i=0;i<changes.length();i++){JSONObject change=changes.getJSONObject(i);String key=change.getString("key");if(!keys.add(key)||!key.startsWith("p:"))throw new IOException("组合设置参数无效");JSONObject property=MijiaModel.find(current.optJSONArray("capabilities"),key);commands.add(MijiaCommand.create(record.getString("did"),property,change.get("value"),false));}
+            int completed=0;for(MijiaCommand command:commands){try{command.accepted(cloud.api(command.path,command.data));completed++;}catch(Exception failure){if(failure instanceof Authentication)throw failure;throw new IOException("已确认 "+completed+" 项；后续设置已停止，请核对设备状态，不会自动重试");}}return "设置已受理，正在后台同步";
+        }
+    }
     static synchronized Object feature(Context c,String id,String operation,JSONObject input)throws Exception{
         try(MijiaVault v=new MijiaVault(c)){MijiaCloud cloud=new MijiaCloud(c,v);JSONObject record=cloud.record(id);if(MijiaFeatures.mutates(operation)){android.app.KeyguardManager guard=c.getSystemService(android.app.KeyguardManager.class);if(guard==null||guard.isDeviceLocked())throw new IOException("请先解锁手机");}if(MijiaFeatures.requiresOnline(operation)){cloud.publish();record=cloud.record(id);JSONObject item=cached(c,id);if(item==null||item.optInt("state")!=1)throw new IOException("设备离线，暂时无法操作");}
             JSONObject fresh=null;if(operation.equals("kitchen.start")){fresh=cloud.read(id,true);KitchenState.ready(record.optString("model"),fresh.optJSONArray("capabilities"));}

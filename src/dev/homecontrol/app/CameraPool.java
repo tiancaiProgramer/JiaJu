@@ -14,6 +14,8 @@ final class CameraPool {
   final AtomicReference<NativeCameraSession.Listener> target=new AtomicReference<>();volatile boolean failed;
   public void status(String value){NativeCameraSession.Listener l=target.get();if(l!=null)l.status(value);}
   public void frame(int codec,long timestamp,byte[] data)throws Exception{NativeCameraSession.Listener l=target.get();if(l!=null)l.frame(codec,timestamp,data);}
+  public void audio(int codec,int rate,int channels,byte[] data)throws Exception{NativeCameraSession.Listener l=target.get();if(l!=null)l.audio(codec,rate,channels,data);}
+  public void control(String name,String code){NativeCameraSession.Listener l=target.get();if(l!=null)l.control(name,code);}
   public void error(String value){failed=true;NativeCameraSession.Listener l=target.get();if(l!=null)l.error(value);}
   public void diagnostic(String code){NativeCameraSession.Listener l=target.get();if(l!=null)l.diagnostic(code);}
   public void metrics(JSONObject values){NativeCameraSession.Listener l=target.get();if(l!=null)l.metrics(values);}

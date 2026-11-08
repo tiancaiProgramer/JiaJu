@@ -1,0 +1,20 @@
+{
+  "apk_sha256": "3e1970ac5dcbb3d593a60335491aaf6f3c46265fde98a8fd85752f221959c367",
+  "instrumentation_success": true,
+  "results": {
+    "actual_video_decoded": true,
+    "physical_commands_sent": false,
+    "video_codec": 5,
+    "video_command_replies": 1,
+    "video_first_receive_ms": 33124,
+    "video_first_render_ms": 36027,
+    "video_frames_received": 139,
+    "video_frames_rendered": 80,
+    "video_handoff_attempts": 0,
+    "video_playback_acknowledged": true,
+    "video_relay_renewals": 0,
+    "video_requested_seconds": 5,
+    "video_saved_to_storage": false,
+    "video_test_elapsed_ms": 40084
+  }
+}

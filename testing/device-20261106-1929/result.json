@@ -1,0 +1,116 @@
+{
+  "date": "2026-11-06",
+  "project": "JiaJu",
+  "version": "0.0.10",
+  "version_code": 10,
+  "device_model": "2308CPXD0C",
+  "abi": "arm64-v8a",
+  "source_base_commit": "6158d4b5bf74dfdcbd7cb876436b8483f29ff310",
+  "installed_apk_path": "dist/windows-20261106/JiaJu-0.0.10.apk",
+  "installed_apk_sha256": "d8876c82fc0bde9259bc17c8f3794f70556127266240e6f5a47ab9606a549b3f",
+  "installed_hash_matches_local_build": true,
+  "same_release_signer": true,
+  "account_preserved": true,
+  "cached_device_counts": {
+    "mijia": 50,
+    "haier": 1,
+    "mijia_online": 31
+  },
+  "camera_model": "chuangmi.camera.069a01",
+  "camera_checks": {
+    "camera_ui_back_exits_fullscreen": true,
+    "camera_ui_command_replies": 18,
+    "camera_ui_continuous_rendering": true,
+    "camera_ui_curated_setting_count": 4,
+    "camera_ui_disconnect_on_exit": true,
+    "camera_ui_exit_fullscreen_same_session": true,
+    "camera_ui_first_frame_ms": 997,
+    "camera_ui_flip_degree_choices": true,
+    "camera_ui_frames_initial": 17,
+    "camera_ui_frames_later": 3619,
+    "camera_ui_fullscreen_keeps_playing": true,
+    "camera_ui_fullscreen_landscape": true,
+    "camera_ui_fullscreen_same_session": true,
+    "camera_ui_fullscreen_surface_height": 1080,
+    "camera_ui_fullscreen_surface_width": 1920,
+    "camera_ui_layout_unchanged": true,
+    "camera_ui_route_correct": true,
+    "camera_ui_same_session_during_watch": true,
+    "camera_ui_settings_same_session": true,
+    "camera_ui_status_overlay_hidden": true,
+    "camera_ui_surface_height": 608,
+    "camera_ui_surface_width": 1080,
+    "screen_render_duration_ms": 179813,
+    "screen_render_fps": 20.0,
+    "screen_render_gap_max_ms": 166,
+    "screen_render_gap_p95_ms": 64
+  },
+  "watch_progress": [
+    {
+      "watch_ms": 15016,
+      "rendered_frames": 318
+    },
+    {
+      "watch_ms": 30038,
+      "rendered_frames": 618
+    },
+    {
+      "watch_ms": 45059,
+      "rendered_frames": 918
+    },
+    {
+      "watch_ms": 60079,
+      "rendered_frames": 1216
+    },
+    {
+      "watch_ms": 75098,
+      "rendered_frames": 1517
+    },
+    {
+      "watch_ms": 90115,
+      "rendered_frames": 1818
+    },
+    {
+      "watch_ms": 105135,
+      "rendered_frames": 2118
+    },
+    {
+      "watch_ms": 120155,
+      "rendered_frames": 2418
+    },
+    {
+      "watch_ms": 135178,
+      "rendered_frames": 2719
+    },
+    {
+      "watch_ms": 150194,
+      "rendered_frames": 3019
+    },
+    {
+      "watch_ms": 165212,
+      "rendered_frames": 3320
+    },
+    {
+      "watch_ms": 180229,
+      "rendered_frames": 3619
+    }
+  ],
+  "temporary_checker_removed": true,
+  "native_process_absent_after_exit": true,
+  "physical_commands_sent": false,
+  "video_saved_to_storage": false,
+  "camera_reuse_enabled": false,
+  "camera_auto_recovery_enabled": false,
+  "initial_attempt": {
+    "outcome": "incomplete",
+    "reason": "系统未允许自动打开首页",
+    "layout_unchanged": true
+  },
+  "launch_workaround": "Start instrumentation; on camera_ui_waiting_for_main, use adb shell am start -W -n dev.homecontrol.app/.MainActivity within its 25-second monitor window.",
+  "limitations": [
+    "Three minutes on this device and network only; not a long-term stability guarantee.",
+    "No recording, screenshots, camera setting writes, physical controls, reuse or auto-recovery tests.",
+    "Raw device logs stay local because they include device/home display names.",
+    "Instrumentation code -1 alone does not prove success; verify camera_ui_error is absent and actual frame/lifecycle fields pass."
+  ]
+}

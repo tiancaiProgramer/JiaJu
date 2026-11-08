@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Build from portable local configuration; signing secrets are never command arguments."""
 import argparse,hashlib,json,os,pathlib,subprocess,sys
+from build_support import executable,ndk_compiler,sdk_command
 
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 
@@ -23,15 +24,18 @@ def configuration():
     required=['JIAJU_JAVA_HOME','JIAJU_ANDROID_SDK','JIAJU_KEYSTORE','JIAJU_KEYSTORE_PASSWORD','JIAJU_GO_HOME','JIAJU_ANDROID_NDK']
     missing=[key for key in required if not env.get(key)]
     if missing:raise SystemExit('Missing configuration: '+', '.join(missing)+'. See CONTINUATION.md.')
-    go=pathlib.Path(env['JIAJU_GO_HOME'])/'bin/go';ndk=pathlib.Path(env['JIAJU_ANDROID_NDK'])
+    go=executable(pathlib.Path(env['JIAJU_GO_HOME'])/'bin','go');ndk=pathlib.Path(env['JIAJU_ANDROID_NDK'])
     if not go.is_file():raise SystemExit('Missing Go 1.26+ toolchain; update JIAJU_GO_HOME.')
-    if not any((ndk/'toolchains/llvm/prebuilt'/host/'bin/aarch64-linux-android31-clang').is_file() for host in ['darwin-x86_64','linux-x86_64']):raise SystemExit('Missing NDK r26+ compiler; update JIAJU_ANDROID_NDK.')
+    ndk_compiler(ndk)
     jdk=pathlib.Path(env['JIAJU_JAVA_HOME']);sdk=pathlib.Path(env['JIAJU_ANDROID_SDK']);tools=sdk/'build-tools/36.0.0'
-    for path in [jdk/'bin/java',jdk/'bin/javac',jdk/'bin/jar',jdk/'bin/keytool',sdk/'platforms/android-35/android.jar',tools/'aapt2',tools/'d8',tools/'zipalign',tools/'apksigner',pathlib.Path(env['JIAJU_KEYSTORE'])]:
+    required_tools=[executable(jdk/'bin',name) for name in ['java','javac','jar','keytool']]
+    for name in ['aapt2','d8','zipalign','apksigner']:
+        required_tools.extend(path for path in sdk_command(tools,name,jdk) if isinstance(path,pathlib.Path))
+    for path in required_tools+[sdk/'platforms/android-35/android.jar',pathlib.Path(env['JIAJU_KEYSTORE'])]:
         if not path.is_file():raise SystemExit('Missing file; update local/build-environment.json: '+str(path))
     env['JAVA_HOME']=str(jdk);env['PATH']=str(jdk/'bin')+os.pathsep+env.get('PATH','')
     env['JIAJU_CHECK_STORE_PASSWORD']=env['JIAJU_KEYSTORE_PASSWORD']
-    certificate=subprocess.check_output([str(jdk/'bin/keytool'),'-exportcert','-keystore',env['JIAJU_KEYSTORE'],'-storepass:env','JIAJU_CHECK_STORE_PASSWORD','-alias',env['JIAJU_KEY_ALIAS']],env=env,stderr=subprocess.DEVNULL)
+    certificate=subprocess.check_output([str(executable(jdk/'bin','keytool')),'-exportcert','-keystore',env['JIAJU_KEYSTORE'],'-storepass:env','JIAJU_CHECK_STORE_PASSWORD','-alias',env['JIAJU_KEY_ALIAS']],env=env,stderr=subprocess.DEVNULL)
     digest=hashlib.sha256(certificate).hexdigest()
     info=ROOT/'private-signing/signing-info.json'
     if info.is_file() and json.loads(info.read_text(encoding='utf-8'))['certificate_sha256']!=digest:raise SystemExit('Signing certificate mismatch; refusing an incompatible update.')
@@ -44,6 +48,7 @@ def main():
     args=parser.parse_args();env,digest=configuration()
     print('Toolchain and signing identity verified:',digest,flush=True)
     if args.check:return
+    subprocess.run([sys.executable,'-m','unittest','discover','-s','tests','-p','test_build_support.py'],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'build.py')],cwd=ROOT,env=env,check=True)
     if args.device_check:subprocess.run([sys.executable,str(ROOT/'tests/build-device-check.py')],cwd=ROOT,env=env,check=True)
 

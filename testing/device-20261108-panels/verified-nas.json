@@ -1,0 +1,30 @@
+{
+  "apk_sha256": "3e1970ac5dcbb3d593a60335491aaf6f3c46265fde98a8fd85752f221959c367",
+  "instrumentation_success": true,
+  "results": {
+    "nas_results": [
+      {
+        "model": "chuangmi.camera.069a01",
+        "config_parsed": true,
+        "has_share": true,
+        "state_known": true,
+        "credentials_logged": false
+      },
+      {
+        "model": "chuangmi.camera.039c01",
+        "config_parsed": true,
+        "has_share": false,
+        "state_known": true,
+        "credentials_logged": false
+      },
+      {
+        "model": "xiaomi.camera.c302",
+        "config_parsed": true,
+        "has_share": false,
+        "state_known": true,
+        "credentials_logged": false
+      }
+    ],
+    "physical_commands_sent": false
+  }
+}

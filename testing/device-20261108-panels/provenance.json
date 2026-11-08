@@ -1,0 +1,8 @@
+{
+  "final_apk": "dist/windows-20261108-device-panels-final/JiaJu-0.0.12.apk",
+  "sha256": "3e1970ac5dcbb3d593a60335491aaf6f3c46265fde98a8fd85752f221959c367",
+  "native_sha256": "c52b9abef6855716ea5a972df64e2efacf2f33c9b9eecdbc848efb1ff1482e30",
+  "strict_playback_test_apk": "dist/windows-20261108-panels-complete/JiaJu-0.0.12.apk",
+  "strict_playback_apk_sha256": "60bcd86d779c46b3dff3e0964775f2ccc7f990934cbebc71a0501f8b6bd18c76",
+  "same_native_component": true
+}
